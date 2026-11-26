@@ -1,0 +1,54 @@
+/* Tus fuentes, servidas desde public/fonts */
+@font-face {
+  font-family: 'Micky';
+  src: url('/fonts/Micky-Regular.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Micky Outline';
+  src: url('/fonts/Micky-OutlineMedium.woff2') format('woff2');
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Square Sans';
+  src: url('/fonts/Square-Sans.woff2') format('woff2');
+  font-display: swap;
+}
+
+:root {
+  --yk-morado: #4b2a86;
+  --yk-noche: #14233f;
+}
+
+body {
+  background-color: var(--yk-morado);
+  color: white;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--mantine-color-mostaza-6);
+  color: var(--yk-noche);
+}
+
+:focus-visible {
+  outline: 3px solid var(--mantine-color-mostaza-6);
+  outline-offset: 3px;
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 1000;
+  padding: 0.6rem 1rem;
+  background: var(--mantine-color-mostaza-6);
+  color: var(--yk-noche);
+  transition: top 150ms ease;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}

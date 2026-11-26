@@ -1,0 +1,18 @@
+.heroShapes {
+  display: block;
+  width: min(100%, 420px);
+  margin-inline: auto;
+  animation: drift 50s linear infinite;
+}
+
+@keyframes drift {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .heroShapes {
+    animation: none;
+  }
+}

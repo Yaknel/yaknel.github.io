@@ -1,0 +1,21 @@
+.disc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 240px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  object-fit: cover;
+  background:
+    radial-gradient(circle at 50% 50%, transparent 0 30%, var(--c) 30.5%),
+    linear-gradient(180deg, var(--mantine-color-mostaza-6) 50%, var(--mantine-color-rosa-6) 50%);
+  color: white;
+  font-family: var(--mantine-font-family-headings);
+  font-size: 1.4rem;
+  text-align: center;
+
+  & span {
+    max-width: 55%;
+    color: var(--yk-noche);
+  }
+}
