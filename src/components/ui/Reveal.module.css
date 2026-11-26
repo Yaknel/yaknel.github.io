@@ -1,0 +1,37 @@
+.reveal {
+  opacity: 0;
+  transition:
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+
+  &[data-effect='up'] {
+    transform: translateY(48px);
+  }
+  &[data-effect='down'] {
+    transform: translateY(-48px);
+  }
+  &[data-effect='left'] {
+    transform: translateX(-56px);
+  }
+  &[data-effect='right'] {
+    transform: translateX(56px);
+  }
+  &[data-effect='zoom'] {
+    transform: scale(0.92);
+  }
+
+  &[data-visible] {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal,
+  .reveal[data-effect] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

@@ -18,8 +18,8 @@
 }
 
 :root {
-  --yk-morado: #4b2a86;
-  --yk-noche: #14233f;
+  --yk-morado: #5f478b;
+  --yk-noche: #2b3a55;
 }
 
 body {
@@ -51,4 +51,11 @@ body {
 
 .skip-link:focus {
   top: 1rem;
+}
+
+/* Subtítulos: Micky en minúsculas, tamaño moderado (Square Sans solo tiene mayúsculas) */
+.subtitle {
+  font-family: var(--mantine-font-family-headings);
+  font-size: clamp(1.1rem, 1.6vw, 1.3rem);
+  line-height: 1.45;
 }

@@ -1,6 +1,5 @@
 import { Anchor, Button, Container, Group, Stack, Text } from '@mantine/core'
 import { Link } from 'react-router'
-import { KlintShapes } from '@/components/ui/KlintShapes'
 import { site } from '@/content/site'
 import classes from './Footer.module.css'
 
@@ -11,7 +10,6 @@ export function Footer() {
 
   return (
     <footer className={classes.footer}>
-      <KlintShapes variant="corner" className={classes.shapes} />
       <Container py={64} className={classes.content}>
         <Group justify="space-between" align="flex-start" gap="xl">
           <Stack gap="xs" maw={300}>

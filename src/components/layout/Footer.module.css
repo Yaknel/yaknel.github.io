@@ -5,20 +5,6 @@
   color: white;
 }
 
-.shapes {
-  position: absolute;
-  right: -50px;
-  bottom: -70px;
-  width: 240px;
-  opacity: 0.9;
-  pointer-events: none;
-
-  @media (max-width: $mantine-breakpoint-sm) {
-    width: 150px;
-    opacity: 0.5;
-  }
-}
-
 .content {
   position: relative;
   z-index: 1;

@@ -1,7 +1,7 @@
 import { AppShell, Center, Loader } from '@mantine/core'
 import { useDisclosure } from '@mantine/hooks'
 import { Suspense } from 'react'
-import { Outlet, ScrollRestoration, useNavigation } from 'react-router'
+import { Outlet, ScrollRestoration, useLocation, useNavigation } from 'react-router'
 import { Footer } from './Footer'
 import { Header } from './Header'
 import { MobileNav } from './MobileNav'
@@ -9,6 +9,7 @@ import { MobileNav } from './MobileNav'
 export function AppLayout() {
   const [menuOpened, menu] = useDisclosure(false)
   const navigation = useNavigation()
+  const { pathname } = useLocation()
 
   return (
     <AppShell header={{ height: 76 }} padding={0} bg="transparent">
@@ -26,7 +27,10 @@ export function AppLayout() {
             </Center>
           }
         >
-          <Outlet />
+          {/* key: cada cambio de página vuelve a lanzar la animación de entrada */}
+          <div key={pathname} className="page-enter">
+            <Outlet />
+          </div>
         </Suspense>
       </AppShell.Main>
 

@@ -11,11 +11,11 @@ interface SectionTitleProps {
 export function SectionTitle({ id, title, lead, order = 2 }: SectionTitleProps) {
   return (
     <>
-      <Title id={id} order={order} tt="uppercase" c="inherit" style={{ letterSpacing: '0.04em' }}>
+      <Title id={id} order={order} c="inherit">
         {title}
       </Title>
       {lead && (
-        <Text size="lg" mt="sm" maw={620} c="inherit">
+        <Text mt="sm" maw={620} c="inherit" className="subtitle">
           {lead}
         </Text>
       )}

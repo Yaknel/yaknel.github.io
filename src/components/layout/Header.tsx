@@ -1,4 +1,5 @@
 import { AppShell, Burger, Button, Container, Group, Text } from '@mantine/core'
+import { useWindowScroll } from '@mantine/hooks'
 import { Link, NavLink } from 'react-router'
 import { site } from '@/content/site'
 import classes from './Header.module.css'
@@ -9,8 +10,9 @@ interface HeaderProps {
 }
 
 export function Header({ menuOpened, onToggleMenu }: HeaderProps) {
+  const [scroll] = useWindowScroll()
   return (
-    <AppShell.Header className={classes.header}>
+    <AppShell.Header className={classes.header} data-scrolled={scroll.y > 24 || undefined}>
       <Container h="100%">
         <Group h="100%" justify="space-between" wrap="nowrap">
           <Link to="/" className={classes.brand} aria-label={`${site.name}, ir al inicio`}>

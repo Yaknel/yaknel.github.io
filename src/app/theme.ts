@@ -5,14 +5,17 @@ import { createTheme, type MantineColorsTuple } from '@mantine/core'
  * las 10 tonalidades que Mantine necesita se generan solas.
  */
 export const palette = {
-  morado: '#4b2a86',
-  lila: '#b38db0',
-  rosa: '#b87276',
-  mostaza: '#c9b82a',
-  verde: '#3d8b72',
-  bosque: '#173f3a',
-  azul: '#53748b',
-  noche: '#14233f',
+  // Tonos suavizados (un punto menos de saturación) de la paleta de yaknel.com.
+  // Originales: morado #4b2a86, lila #b38db0, rosa #b87276, mostaza #c9b82a,
+  // verde #3d8b72, bosque #173f3a, azul #53748b, noche #14233f.
+  morado: '#5f478b',
+  lila: '#b6a1b4',
+  rosa: '#b28b8d',
+  mostaza: '#b7ad56',
+  verde: '#588f7e',
+  bosque: '#2f5450',
+  azul: '#5f7686',
+  noche: '#2b3a55',
   tinta: '#33333a',
 } as const
 
@@ -66,9 +69,9 @@ export const theme = createTheme({
     fontFamily: '"Micky", Georgia, serif',
     fontWeight: '400',
     sizes: {
-      h1: { fontSize: 'clamp(2.4rem, 6vw, 4.4rem)', lineHeight: '1.05' },
-      h2: { fontSize: 'clamp(1.9rem, 4.5vw, 3rem)', lineHeight: '1.1' },
-      h3: { fontSize: '1.6rem', lineHeight: '1.2' },
+      h1: { fontSize: 'clamp(2rem, 4.5vw, 3.3rem)', lineHeight: '1.1' },
+      h2: { fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', lineHeight: '1.2' },
+      h3: { fontSize: '1.3rem', lineHeight: '1.25' },
     },
   },
   fontSizes: { md: '1.05rem', lg: '1.2rem' },

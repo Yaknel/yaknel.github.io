@@ -3,13 +3,14 @@ import { site } from '@/content/site'
 import {
   AboutSection,
   ContactSection,
+  GallerySection,
   HeroSection,
   NewsletterSection,
   OfferingsSection,
   ShopSection,
 } from '@/features/sections'
 
-/** Portada: todas las secciones encadenadas, cada una en su franja de color. */
+/** Portada: cada sección en su franja de color. La poética de la historia vive en /tienda. */
 export default function HomePage() {
   return (
     <>
@@ -17,7 +18,7 @@ export default function HomePage() {
       <HeroSection />
       <NewsletterSection />
       <OfferingsSection kind="taller" />
-      <OfferingsSection kind="poetica" />
+      <GallerySection />
       <ShopSection />
       <AboutSection />
       <ContactSection />

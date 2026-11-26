@@ -1,18 +1,53 @@
-.heroShapes {
-  display: block;
-  width: min(100%, 420px);
+/* Collage de portada: tres fotos superpuestas que flotan suavemente */
+.collage {
+  position: relative;
+  max-width: 520px;
   margin-inline: auto;
-  animation: drift 50s linear infinite;
+  aspect-ratio: 1 / 1.05;
 }
 
-@keyframes drift {
-  to {
-    transform: rotate(360deg);
+.collageMain {
+  position: absolute;
+  left: 18%;
+  top: 6%;
+  width: 56%;
+  z-index: 2;
+  animation: float 9s ease-in-out infinite;
+}
+
+.collageTop {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 42%;
+  z-index: 1;
+  animation: float 11s ease-in-out -3s infinite;
+}
+
+.collageBottom {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 30%;
+  z-index: 3;
+  animation: float 10s ease-in-out -6s infinite;
+}
+
+@keyframes float {
+  50% {
+    translate: 0 -14px;
   }
 }
 
+.narrow {
+  max-width: 420px;
+  margin-inline: auto;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .heroShapes {
+  .collageMain,
+  .collageTop,
+  .collageBottom {
     animation: none;
   }
 }

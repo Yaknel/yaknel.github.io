@@ -2,6 +2,7 @@
   position: relative;
   overflow: hidden;
   padding-block: 4.5rem;
+  transition: background-color 600ms ease;
   color: var(--yk-noche);
 
   @media (min-width: $mantine-breakpoint-md) {

@@ -22,6 +22,7 @@ export const products: Product[] = [
     description:
       'Mujeres que aman a mujeres, la posibilidad de la otra, la belleza, lo abrupto. La Niña Azul Editorial.',
     label: 'Novela',
+    image: '/images/bruma-cover.jpg',
     checkoutUrl: 'https://laninaazul.es',
     color: 'lila',
   },
@@ -30,6 +31,7 @@ export const products: Product[] = [
     title: 'Poemario ilustrado',
     description: 'Poemas e ilustraciones en colaboración con Eva Marina Burckhardt.',
     label: 'Próximamente',
+    image: '/images/img_20190524_171635.jpg',
     color: 'rosa',
   },
   {
@@ -37,6 +39,7 @@ export const products: Product[] = [
     title: 'Serie de postales',
     description: 'Fragmentos breves de mi escritura convertidos en tarjetas para enviar o guardar.',
     label: 'Postales',
+    image: '/images/img_20210501_174354.jpg',
     color: 'mostaza',
   },
 ]
