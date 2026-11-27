@@ -4,6 +4,7 @@
  */
 import {
   Accordion,
+  Anchor,
   Box,
   Button,
   Container,
@@ -28,6 +29,7 @@ import type { Photo } from '@/content/photos'
 import { photos } from '@/content/photos'
 import { products } from '@/content/products'
 import { site } from '@/content/site'
+import { somatica } from '@/content/somatica'
 import { testimonials, type Testimonial } from '@/content/testimonials'
 import { offerings } from '@/content/workshops'
 import { ContactForm } from '@/features/contact/ContactForm'
@@ -96,6 +98,7 @@ interface FeatureProps {
   photoFirst?: boolean
   order?: 1 | 2 | 3
   priority?: boolean
+  photoFit?: 'cover' | 'contain'
 }
 
 /** Bloque de color + foto cuadrada con un título, un texto y sus botones. */
@@ -110,9 +113,17 @@ export function Feature({
   photoFirst,
   order,
   priority,
+  photoFit,
 }: FeatureProps) {
   return (
-    <Split tone={tone} photo={photo} photoFirst={photoFirst} labelledBy={id} priority={priority}>
+    <Split
+      tone={tone}
+      photo={photo}
+      photoFirst={photoFirst}
+      labelledBy={id}
+      priority={priority}
+      photoFit={photoFit}
+    >
       <Panel tone={tone} id={id} kind={kind} title={title} order={order} ctas={ctas}>
         {typeof text === 'string' ? <Text size="lg">{text}</Text> : text}
       </Panel>
@@ -175,6 +186,7 @@ export function HomeOverview() {
         photo={photos.writing.book}
         photoFirst
         id="home-writing"
+        photoFit="contain"
         kind={site.writing.title}
         title={site.writing.book.title}
         text={site.writing.book.description}
@@ -200,15 +212,6 @@ export function HomeOverview() {
         ctas={[{ label: site.workWithMe.cta, href: '/trabaja-conmigo' }]}
       />
       <Feature
-        tone="lila"
-        photo={photos.speaking}
-        id="home-speaking"
-        kind="Charlas y presentaciones"
-        title={site.speaking.title}
-        text={site.speaking.lead}
-        ctas={[{ label: site.speaking.cta, href: '/charlas' }]}
-      />
-      <Feature
         tone="mostaza"
         photo={photos.about}
         photoFirst
@@ -232,24 +235,22 @@ export function WritingSections() {
         tone="mostaza"
         photo={photos.writing.book}
         id="book"
+        photoFit="contain"
         kind={book.kind}
         title={book.title}
         text={book.description}
         ctas={[{ label: book.cta, href: book.href }]}
       />
-      <Feature
-        tone="rosa"
-        photo={photos.writing.poetry}
-        photoFirst
+      <NewsletterSection
         id="poetry"
         kind={poetry.kind}
-        title={poetry.title}
         text={poetry.description}
-        ctas={[{ label: poetry.cta, href: poetry.href }]}
+        link={{ label: poetry.cta, href: poetry.href }}
       />
       <Feature
         tone="azul"
         photo={photos.writing.publication}
+        photoFirst
         id="publication"
         kind={publication.kind}
         title={publication.title}
@@ -328,13 +329,19 @@ export function WorkshopSections() {
   )
 }
 
-function FaqSection() {
+function FaqSection({
+  items = site.workshop.faq,
+  title = site.workshop.faqTitle,
+}: {
+  items?: ReadonlyArray<{ q: string; a: string }>
+  title?: string
+}) {
   return (
     <Band tone="blanco" labelledBy="faq-title" size="md">
       <Reveal effect="up">
-        <SectionTitle id="faq-title" title={site.workshop.faqTitle} />
+        <SectionTitle id="faq-title" title={title} />
         <Accordion mt="xl" variant="separated" radius={0} classNames={{ item: classes.faqItem }}>
-          {site.workshop.faq.map((f) => (
+          {items.map((f) => (
             <Accordion.Item key={f.q} value={f.q}>
               <Accordion.Control>{f.q}</Accordion.Control>
               <Accordion.Panel>{f.a}</Accordion.Panel>
@@ -505,23 +512,55 @@ export function AboutSections() {
 
 /* ------------------------- Newsletter & contact ------------------------- */
 
-/** Suscripción a Sigo Aquí (Substack). */
-export function NewsletterSection() {
+/**
+ * Sigo Aquí: franja lila a todo el ancho, sin foto, con el título en Micky mostaza
+ * y la casilla de suscripción (como el bloque de Da Yaknel Podcast en yaknel.com).
+ */
+export function NewsletterSection({
+  id = 'newsletter',
+  kind,
+  text = site.newsletter.lead,
+  link,
+}: {
+  id?: string
+  kind?: string
+  text?: string
+  link?: Cta
+}) {
   return (
-    <Feature
-      tone="lila"
-      photo={photos.newsletter}
-      photoFirst
-      id="newsletter-title"
-      kind="Newsletter"
-      title={site.newsletter.title}
-      text={
-        <Stack gap="md">
-          <Text size="lg">{site.newsletter.lead}</Text>
-          <SubscribeEmbed />
-        </Stack>
-      }
-    />
+    <Box component="section" id={id} aria-labelledby={`${id}-title`} className={classes.newsletter}>
+      <Container size="xl">
+        <div className={classes.newsletterInner}>
+          <Reveal effect="up">
+            <Stack align="center" gap="md" ta="center">
+              {kind && (
+                <Text size="sm" fw={700} className={classes.kind}>
+                  {kind}
+                </Text>
+              )}
+              <Title id={`${id}-title`} order={2} className={classes.newsletterTitle}>
+                {site.newsletter.title}
+              </Title>
+              <Text size="lg" maw={720}>
+                {text}
+              </Text>
+              <SubscribeEmbed label={site.newsletter.cta} />
+              {link && (
+                <Anchor
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  c="white"
+                  size="sm"
+                >
+                  {link.label} →
+                </Anchor>
+              )}
+            </Stack>
+          </Reveal>
+        </div>
+      </Container>
+    </Box>
   )
 }
 
@@ -551,5 +590,128 @@ export function ShopSection() {
       <SectionTitle id="shop-title" order={1} title={site.shop.title} lead={site.shop.lead} />
       <ProductList items={products} buttonColor="verde" />
     </Band>
+  )
+}
+
+/* ----------------- Taller mensual de escritura somática ----------------- */
+
+export function SomaticaSections() {
+  const t = somatica
+  return (
+    <>
+      <Split tone="verde" photo={photos.somatica.hero} labelledBy="somatica-title" priority>
+        <div className="stagger">
+          <Text size="sm" fw={700} className={classes.kind}>
+            {t.eyebrow}
+          </Text>
+          <Title id="somatica-title" order={1} mt="md">
+            {t.title}
+          </Title>
+          <Text size="lg" mt="md">
+            {t.lead}
+          </Text>
+          <Group gap={8} mt="lg">
+            {t.facts.map((f) => (
+              <span key={f} className={classes.role}>
+                {f}
+              </span>
+            ))}
+            <span className={classes.price}>{t.price}</span>
+          </Group>
+          <Group mt="xl">
+            <SmartButton href={t.bookingHref} color="mostaza" size="md">
+              {t.cta}
+            </SmartButton>
+          </Group>
+        </div>
+      </Split>
+
+      <Band tone="blanco" labelledBy="invitation-title" size="sm">
+        <Reveal effect="up">
+          <Title id="invitation-title" order={2} c="verde.6" ta="center">
+            {t.invitation.title}
+          </Title>
+          <Stack gap="md" mt="xl">
+            {t.invitation.paragraphs.map((p) => (
+              <Text key={p} size="lg">
+                {p}
+              </Text>
+            ))}
+          </Stack>
+        </Reveal>
+      </Band>
+
+      <Band tone="blanco" labelledBy="steps-title">
+        <Reveal effect="up">
+          <Title id="steps-title" order={2} c="verde.6" ta="center" mb={40}>
+            ¿Qué haremos?
+          </Title>
+        </Reveal>
+        <SimpleGrid cols={{ base: 1, md: 3 }} spacing={24}>
+          {t.steps.map((step, i) => (
+            <Reveal key={step.title} effect="up" delay={i * 120}>
+              <Stack
+                gap="sm"
+                p="xl"
+                h="100%"
+                className={classes.card}
+                data-tone={(['azul', 'rosa', 'lila'] as const)[i % 3]}
+              >
+                <Text className={classes.stepNumber}>0{i + 1}</Text>
+                <Title order={3}>{step.title}</Title>
+                <Text>{step.text}</Text>
+              </Stack>
+            </Reveal>
+          ))}
+        </SimpleGrid>
+      </Band>
+
+      <Split tone="mostaza" photo={photos.workshop} photoFirst labelledBy="includes-title">
+        <Title id="includes-title" order={2}>
+          ¿Qué incluye el taller?
+        </Title>
+        <List spacing="xs" c="inherit">
+          {t.includes.map((item) => (
+            <List.Item key={item}>{item}</List.Item>
+          ))}
+        </List>
+        <Text size="sm" fs="italic">
+          {t.disclaimer}
+        </Text>
+      </Split>
+
+      <Split tone="azul" photo={photos.somatica.guide} labelledBy="guide-title">
+        <Text size="sm" fw={700} className={classes.kind}>
+          Quién te acompaña
+        </Text>
+        <Title id="guide-title" order={2}>
+          {t.guide.title}
+        </Title>
+        {t.guide.paragraphs.map((p) => (
+          <Text key={p}>{p}</Text>
+        ))}
+      </Split>
+
+      <FaqSection items={t.faq} title="Preguntas frecuentes" />
+
+      <Band tone="mostaza" labelledBy="closing-title" size="sm">
+        <Reveal effect="up">
+          <Stack align="center" ta="center" gap="md">
+            <Text size="sm" fw={700} className={classes.kind}>
+              {t.closing.eyebrow}
+            </Text>
+            <Title id="closing-title" order={2} c="verde.9">
+              {t.closing.title}
+            </Title>
+            <Text size="lg" maw={560}>
+              {t.closing.text}
+            </Text>
+            <SmartButton href={t.bookingHref} color="verde" size="md">
+              {t.closing.cta}
+            </SmartButton>
+          </Stack>
+        </Reveal>
+      </Band>
+    </>
   )
 }

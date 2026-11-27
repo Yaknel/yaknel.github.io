@@ -9,7 +9,6 @@ describe('subjectFromSlug', () => {
   it('mapea el slug de la URL al asunto', () => {
     expect(subjectFromSlug('taller-mensual')).toBe('Taller: Taller mensual de escritura somática')
     expect(subjectFromSlug('bruma')).toBe('Tienda: Bruma')
-    expect(subjectFromSlug('charlas')).toBe('Charlas y presentaciones')
     expect(subjectFromSlug('nada')).toBe('Consulta general')
     expect(subjectFromSlug(null)).toBe('Consulta general')
   })

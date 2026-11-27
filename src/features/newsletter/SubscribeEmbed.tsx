@@ -1,18 +1,38 @@
+import { Button, Group, TextInput } from '@mantine/core'
+import { useState, type FormEvent } from 'react'
 import { config } from '@/lib/config'
-import { site } from '@/content/site'
+import classes from './SubscribeEmbed.module.css'
 
 /**
- * Formulario oficial de Substack: las suscriptoras van directas a tu lista, sin backend propio.
+ * Casilla de suscripción con el estilo de la web. Al enviar, abre la página de Substack
+ * con el correo ya escrito: la suscripción se confirma allí, sin backend propio.
  */
-export function SubscribeEmbed() {
+export function SubscribeEmbed({ label = 'Suscríbete <3' }: { label?: string }) {
+  const [email, setEmail] = useState('')
+
+  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    const url = `${config.substackUrl}/subscribe?email=${encodeURIComponent(email.trim())}`
+    window.open(url, '_blank', 'noopener,noreferrer')
+  }
+
   return (
-    <iframe
-      src={`${config.substackUrl}/embed`}
-      title={`Suscríbete a ${site.newsletter.title}`}
-      width="100%"
-      height="150"
-      loading="lazy"
-      style={{ display: 'block', maxWidth: 480, border: 0, background: 'white' }}
-    />
+    <form onSubmit={handleSubmit} className={classes.form} aria-label="Suscripción a la newsletter">
+      <Group gap="sm" justify="center" wrap="wrap">
+        <TextInput
+          type="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.currentTarget.value)}
+          placeholder="Tu correo"
+          aria-label="Tu correo"
+          classNames={{ input: classes.input }}
+          className={classes.field}
+        />
+        <Button type="submit" variant="outline" color="white" className={classes.button}>
+          {label}
+        </Button>
+      </Group>
+    </form>
   )
 }

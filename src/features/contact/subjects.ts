@@ -6,7 +6,6 @@ export const GENERAL_SUBJECT = 'Consulta general'
 const subjectsById: Array<{ id: string; title: string }> = [
   { id: 'editorial', title: 'Acompañamiento editorial 1:1' },
   { id: 'colaboracion', title: 'Colaboración creativa' },
-  { id: 'charlas', title: 'Charlas y presentaciones' },
   ...offerings.map(({ id, title }) => ({ id, title: `Taller: ${title}` })),
   ...products.map(({ id, title }) => ({ id, title: `Tienda: ${title}` })),
 ]

@@ -68,6 +68,19 @@ export function Footer() {
           <Text size="sm" fw={700} c="lila.6">
             ©{YEAR} {site.fullName}. Todos los derechos reservados
           </Text>
+          <Group component="nav" aria-label="Legal" gap="lg">
+            {site.legal.map((l) =>
+              l.href ? (
+                <a key={l.label} href={l.href} className={classes.legal}>
+                  {l.label}
+                </a>
+              ) : (
+                <span key={l.label} className={classes.legal}>
+                  {l.label}
+                </span>
+              ),
+            )}
+          </Group>
           <Text size="sm" c="verde.6">
             {site.location}
           </Text>

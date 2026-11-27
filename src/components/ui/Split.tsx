@@ -14,6 +14,8 @@ interface SplitProps {
   id?: string
   labelledBy?: string
   priority?: boolean
+  /** 'contain': muestra la imagen entera, más pequeña y centrada (p. ej. la portada de un libro). */
+  photoFit?: 'cover' | 'contain'
   children: ReactNode
 }
 
@@ -28,6 +30,7 @@ export function Split({
   id,
   labelledBy,
   priority,
+  photoFit = 'cover',
   children,
 }: SplitProps) {
   return (
@@ -43,7 +46,18 @@ export function Split({
           </div>
         </Reveal>
         <Reveal effect="fade" delay={150} className={classes.photo}>
-          <PhotoFrame photo={photo} ratio={1} priority={priority} />
+          {photoFit === 'contain' ? (
+            <div className={classes.contain} data-tone={tone}>
+              <img
+                src={photo.src}
+                alt={photo.alt}
+                loading={priority ? 'eager' : 'lazy'}
+                decoding="async"
+              />
+            </div>
+          ) : (
+            <PhotoFrame photo={photo} ratio={1} priority={priority} />
+          )}
         </Reveal>
       </Container>
     </Box>

@@ -26,7 +26,7 @@ export const offerings: Offering[] = [
       'Un encuentro al mes, unido por un hilo conductor, para escribir desde la cuerpa: atención, respiración, memoria y palabra.',
     format: 'Online · Zoom · en español',
     dates: ['2026-11-29', '2026-12-27'],
-    cta: { label: 'Quiero participar', href: '/contacto?asunto=taller-mensual' },
+    cta: { label: 'Ver el taller', href: '/taller/escritura-somatica' },
   },
   {
     id: 'poetry-project',

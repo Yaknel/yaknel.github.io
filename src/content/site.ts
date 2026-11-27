@@ -31,7 +31,6 @@ export const site = {
     { label: 'Escritura', to: '/escritura' },
     { label: 'Taller', to: '/taller' },
     { label: 'Trabaja conmigo', to: '/trabaja-conmigo' },
-    { label: 'Charlas', to: '/charlas' },
     { label: 'Sobre mí', to: '/sobre-mi' },
     { label: 'Contacto', to: '/contacto' },
   ] satisfies NavItem[],
@@ -39,9 +38,16 @@ export const site = {
   socials: [
     { label: 'LinkedIn', href: 'https://www.linkedin.com/in/yaknelelorza/' },
     { label: 'YouTube', href: 'https://www.youtube.com/@yaknelelorza' },
+    { label: 'Spotify', href: 'https://open.spotify.com/show/0BgeT8nbdUjsGFS1gxg6Xq' },
     { label: 'Instagram', href: 'https://www.instagram.com/yaknelelorza' },
     { label: 'Substack', href: 'https://yaknel.substack.com' },
   ] satisfies SocialLink[],
+  // Enlaces legales del pie. Sin href, se muestra solo el texto.
+  legal: [
+    { label: 'Privacy Policy', href: 'https://yaknel.com/privacy-policy/' },
+    { label: 'Cookie Policy', href: 'https://yaknel.com/cookie-policy/' },
+    { label: 'Terms and Conditions', href: '' },
+  ],
 
   /* ---------- Inicio ---------- */
   hero: {
@@ -152,7 +158,7 @@ export const site = {
     },
   },
 
-  /* ---------- Charlas y presentaciones ---------- */
+  /* ---------- Charlas y presentaciones (oculto por ahora: sin ruta ni menú) ---------- */
   speaking: {
     title: 'Charlas y presentaciones',
     lead: 'Presentadora, moderadora y ponente en lecturas literarias, festivales y encuentros comunitarios, en español, inglés y alemán.',
@@ -205,8 +211,8 @@ export const site = {
   /* ---------- Newsletter y contacto ---------- */
   newsletter: {
     title: 'Sigo Aquí',
-    lead: 'Suscríbete a mi newsletter: poesía, talleres y novedades, directo en tu correo.',
-    cta: 'Suscríbete',
+    lead: 'Esfumarme en el tiempo a través de la palabra habitando la cuerpa. Mi poesía, talleres y novedades, directo en tu correo.',
+    cta: 'Suscríbete <3',
   },
   contact: {
     title: 'Contacto',

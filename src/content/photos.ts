@@ -14,14 +14,17 @@ export const photos = {
   writing: {
     book: img('bruma-cover.jpg', 'Portada del libro Bruma'),
     poetry: img('img_20201204_105404-copy.jpg', 'Yaknel con sombrero entre las plantas'),
-    publication: img('img_20191020_175244.jpg', 'Retrato con luz de neón'),
+    publication: img(
+      'quote.jpg',
+      'Pintura: un árbol con frutos rojos dentro de un círculo azul, rodeado de estrellas',
+    ),
     media: [
       img('4.jpg', 'Yaknel con la cabeza hacia atrás sobre un fondo pintado de morado'),
       img('img_20210616_182151.jpg', 'Retrato de Yaknel'),
       img('001finalportada.jpg', 'Portada de Da Yaknel Podcast'),
     ],
   },
-  workshop: img('pitaya_yoga2019_73.jpg', 'Práctica somática entre plantas y piedras'),
+  workshop: img('escritura.jpg', 'Yaknel escribiendo a mano en una mesa de madera'),
   workshops: {
     'taller-mensual-online': img(
       'pitaya_yoga2019_73.jpg',
@@ -40,6 +43,10 @@ export const photos = {
     collaboration: img('019.jpg', 'Performance con una gran tela roja en un jardín'),
   },
   speaking: img('season-opening-2020.jpg', 'Yaknel presentando un evento'),
+  somatica: {
+    hero: img('pitaya_yoga2019_73.jpg', 'Práctica somática entre plantas y piedras'),
+    guide: img('img_20210806_102800.jpg', 'Polaroid de Yaknel en el invernadero'),
+  },
   about: img('img_20210806_102800.jpg', 'Polaroid de Yaknel en el invernadero'),
   aboutMore: img('img_20191020_172048.jpg', 'Retrato con abrigo verde'),
   newsletter: img('img_20201204_105005.jpg', 'Yaknel sentada entre plantas'),
