@@ -7,12 +7,14 @@ export const somatica = {
   title: 'Escribir desde la cuerpa.',
   lead: 'Darle voz a las historias que aún no sabemos que llevamos dentro.',
   facts: [
+    'Primer taller: domingo 31 de enero',
     'Último domingo del mes',
+    'Un tema diferente cada mes',
     '10:00 hora de Berlín',
     '2 horas en vivo',
     'Grabación disponible un mes',
   ],
-  price: '65 €',
+  price: '65 € al mes',
   cta: 'Quiero reservar mi lugar',
   // Reserva: de momento lleva al formulario de contacto. Pega aquí tu enlace de pago cuando lo tengas.
   bookingHref: '/contacto?asunto=taller-mensual',
@@ -22,6 +24,7 @@ export const somatica = {
     paragraphs: [
       'Cada mes nos reunimos para escucharla. Respiramos, nos enraizamos, meditamos y dejamos que la escritura aparezca como su eco. Con herramientas de grounding, meditación y respiración construimos la cuerpa como un lugar seguro, y desde ahí escribimos.',
       'Es un espacio gentil para explorar. No necesitas experiencia previa ni tener nada claro. Solo llegar.',
+      'Cada mes trabajamos un tema diferente, así que puedes entrar en cualquier momento.',
     ],
   },
 
@@ -93,8 +96,12 @@ export const somatica = {
       a: 'No. Es un espacio creativo y de autoexploración. Puede mover cosas, por eso cuidamos el ritmo y siempre puedes pausar.',
     },
     {
+      q: '¿Cuánto cuesta?',
+      a: '65 € por taller. Cada mes hay un tema diferente y pagas solo los meses a los que vienes.',
+    },
+    {
       q: '¿Puedo venir a un solo taller?',
-      a: 'Sí. Cada mes es independiente. Puedes venir una vez o acompañarnos de forma continua.',
+      a: 'Sí. Cada mes es independiente y tiene su propio tema. Puedes venir una vez o acompañarnos de forma continua.',
     },
   ],
 

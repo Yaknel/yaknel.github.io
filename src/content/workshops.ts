@@ -23,9 +23,9 @@ export const offerings: Offering[] = [
     kind: 'taller',
     title: 'Taller mensual de escritura somática',
     summary:
-      'Un encuentro al mes, unido por un hilo conductor, para escribir desde la cuerpa: atención, respiración, memoria y palabra.',
-    format: 'Online · Zoom · en español',
-    dates: ['2026-11-29', '2026-12-27'],
+      'Un encuentro al mes, cada vez con un tema diferente, para escribir desde la cuerpa: atención, respiración, memoria y palabra. 65 € por taller.',
+    format: 'Online · Zoom · último domingo del mes · 65 €',
+    dates: ['2027-01-31'],
     cta: { label: 'Ver el taller', href: '/taller/escritura-somatica' },
   },
   {

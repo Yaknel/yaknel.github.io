@@ -117,19 +117,22 @@ export const site = {
     lead: 'Escribir desde la cuerpa: atención, respiración, memoria y palabra. Grupos pequeños, en español, online y en Berlín.',
     cta: 'Únete al taller',
     faqTitle: 'Preguntas frecuentes',
-    // De tu página de talleres anterior. Completa o cambia lo que haga falta.
     faq: [
       {
-        q: '¿Cuánto es la inversión?',
-        a: 'El valor total del curso es de 150 €, en un pago único.',
+        q: '¿Cuánto cuesta el taller mensual?',
+        a: '65 € por taller. Cada mes hay un tema diferente y pagas solo los meses a los que vienes.',
+      },
+      {
+        q: '¿Cuándo empieza?',
+        a: 'El primero es el domingo 31 de enero de 2027, a las 10:00 hora de Berlín. Después, el último domingo de cada mes.',
       },
       {
         q: '¿Cómo accedo a las clases?',
         a: 'A través de un enlace de Zoom que recibirás por correo una vez completada tu inscripción.',
       },
       {
-        q: '¿Por cuánto tiempo estará disponible el material?',
-        a: 'Durante 3 meses después de finalizado el taller.',
+        q: '¿Y si no puedo conectarme en vivo?',
+        a: 'Recibes la grabación, disponible durante un mes.',
       },
       {
         q: 'Me registré pero no he recibido la confirmación',

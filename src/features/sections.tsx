@@ -168,7 +168,13 @@ export function HeroSection() {
           <Button component={Link} to="/escritura" color="tinta" size="md">
             {site.writing.cta}
           </Button>
-          <Button component={Link} to="/taller" color="white" variant="outline" size="md">
+          <Button
+            component={Link}
+            to="/taller/escritura-somatica"
+            color="white"
+            variant="outline"
+            size="md"
+          >
             {site.workshop.cta}
           </Button>
         </Group>
@@ -199,7 +205,7 @@ export function HomeOverview() {
         kind="Taller"
         title={site.workshop.title}
         text={site.workshop.lead}
-        ctas={[{ label: site.workshop.cta, href: '/taller' }]}
+        ctas={[{ label: site.workshop.cta, href: '/taller/escritura-somatica' }]}
       />
       <Feature
         tone="azul"
@@ -313,7 +319,7 @@ export function WorkshopSections() {
         kind="Taller"
         title={site.workshop.title}
         text={site.workshop.lead}
-        ctas={[{ label: site.workshop.cta, href: '#next' }]}
+        ctas={[{ label: site.workshop.cta, href: '/taller/escritura-somatica' }]}
         priority
       />
       <Band tone="blanco" id="next" labelledBy="next-title">
