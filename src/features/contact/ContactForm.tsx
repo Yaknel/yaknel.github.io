@@ -29,10 +29,9 @@ export function ContactForm({ initialSubject = GENERAL_SUBJECT }: ContactFormPro
     mode: 'uncontrolled',
     initialValues: { name: '', email: '', subject: initialSubject, message: '', website: '' },
     validate: {
-      name: isNotEmpty('Please tell me your name'),
-      email: isEmail('This email doesn’t look right'),
-      message: (v) =>
-        v.trim().length < 10 ? 'Tell me a little more (at least 10 characters)' : null,
+      name: isNotEmpty('Dime tu nombre'),
+      email: isEmail('Este correo no parece válido'),
+      message: (v) => (v.trim().length < 10 ? 'Cuéntame un poco más (mínimo 10 caracteres)' : null),
     },
   })
 
@@ -45,8 +44,8 @@ export function ContactForm({ initialSubject = GENERAL_SUBJECT }: ContactFormPro
     } catch {
       notifications.show({
         color: 'rosa',
-        title: 'Couldn’t send',
-        message: 'Please try again in a few minutes.',
+        title: 'No se pudo enviar',
+        message: 'Inténtalo de nuevo en unos minutos.',
       })
     } finally {
       setSubmitting(false)
@@ -55,8 +54,8 @@ export function ContactForm({ initialSubject = GENERAL_SUBJECT }: ContactFormPro
 
   if (sent) {
     return (
-      <Alert color="verde" icon={<IconCheck />} title="Message sent!">
-        Thank you for writing. I’ll get back to you soon.
+      <Alert color="verde" icon={<IconCheck />} title="¡Mensaje enviado!">
+        Gracias por escribirme. Te responderé lo antes posible.
       </Alert>
     )
   }
@@ -74,13 +73,13 @@ export function ContactForm({ initialSubject = GENERAL_SUBJECT }: ContactFormPro
       <Stack gap="md">
         {!config.formspreeId && (
           <Alert color="mostaza" icon={<IconInfoCircle />}>
-            Test mode: missing <code>VITE_FORMSPREE_ID</code>.
+            Formulario en modo prueba: falta configurar <code>VITE_FORMSPREE_ID</code>.
           </Alert>
         )}
 
         <Group grow align="flex-start" preventGrowOverflow={false} wrap="wrap">
           <TextInput
-            label="Name"
+            label="Nombre"
             autoComplete="name"
             required
             miw={220}
@@ -88,7 +87,7 @@ export function ContactForm({ initialSubject = GENERAL_SUBJECT }: ContactFormPro
             {...form.getInputProps('name')}
           />
           <TextInput
-            label="Email"
+            label="Correo"
             type="email"
             autoComplete="email"
             required
@@ -99,7 +98,7 @@ export function ContactForm({ initialSubject = GENERAL_SUBJECT }: ContactFormPro
         </Group>
 
         <Select
-          label="Subject"
+          label="Asunto"
           data={subjectOptions}
           allowDeselect={false}
           key={form.key('subject')}
@@ -107,7 +106,7 @@ export function ContactForm({ initialSubject = GENERAL_SUBJECT }: ContactFormPro
         />
 
         <Textarea
-          label="Message"
+          label="Mensaje"
           required
           autosize
           minRows={5}
@@ -128,10 +127,10 @@ export function ContactForm({ initialSubject = GENERAL_SUBJECT }: ContactFormPro
 
         <Stack gap="xs" mt="sm">
           <Button fullWidth type="submit" size="md" color="lila" loading={submitting}>
-            SEND MESSAGE
+            ENVIAR MENSAJE
           </Button>
           <Text size="sm" c="dimmed" ta="center">
-            Your email is only used to reply to you.
+            Tu correo solo se usa para responderte.
           </Text>
         </Stack>
       </Stack>

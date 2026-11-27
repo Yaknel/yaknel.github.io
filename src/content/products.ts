@@ -1,7 +1,7 @@
 /**
  * Tienda. GitHub Pages es estático, así que el pago lo gestiona un servicio externo:
  * crea un "Payment Link" en Stripe (o Gumroad, Ko-fi...) y pega la URL en `checkoutUrl`.
- * Si `checkoutUrl` está vacío, el botón lleva a /contact.
+ * Si `checkoutUrl` está vacío, el botón lleva a /contacto.
  * Las imágenes van en public/images/ (p. ej. "/images/bruma.jpg").
  */
 export interface Product {

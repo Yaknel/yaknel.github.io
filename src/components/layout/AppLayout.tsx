@@ -14,7 +14,7 @@ export function AppLayout() {
   return (
     <AppShell header={{ height: 84 }} padding={0} bg="transparent">
       <a className="skip-link" href="#contenido">
-        Skip to content
+        Saltar al contenido
       </a>
       <Header menuOpened={menuOpened} onToggleMenu={menu.toggle} />
       <MobileNav opened={menuOpened} onClose={menu.close} />

@@ -6,16 +6,16 @@ import { Seo } from '@/components/ui/Seo'
 export default function NotFoundPage() {
   return (
     <>
-      <Seo title="Page not found" />
+      <Seo title="Página no encontrada" />
       <Band tone="blanco" labelledBy="nf-title">
         <Text c="rosa.6" fw={700}>
           404
         </Text>
         <Title id="nf-title" order={1} c="verde.6" my="md">
-          This page got lost in the mist
+          Esta página se perdió en la bruma
         </Title>
         <Button component={Link} to="/" color="lila">
-          Back home
+          Volver al inicio
         </Button>
       </Band>
     </>

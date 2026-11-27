@@ -16,11 +16,11 @@ export function Header({ menuOpened, onToggleMenu }: HeaderProps) {
     <AppShell.Header className={classes.header} data-scrolled={scroll.y > 24 || undefined}>
       <Container size="xl" h="100%">
         <Group h="100%" justify="space-between" wrap="nowrap" gap="xl">
-          <Link to="/" className={classes.logo} aria-label={`${site.name}, home`}>
+          <Link to="/" className={classes.logo} aria-label={`${site.name}, ir al inicio`}>
             {site.name}
           </Link>
 
-          <Group component="nav" aria-label="Main" gap={2} visibleFrom="lg" wrap="nowrap">
+          <Group component="nav" aria-label="Principal" gap={2} visibleFrom="lg" wrap="nowrap">
             {site.nav.map((item) => (
               <NavLink key={item.to} to={item.to} end className={classes.link}>
                 {item.label}
@@ -33,7 +33,7 @@ export function Header({ menuOpened, onToggleMenu }: HeaderProps) {
             onClick={onToggleMenu}
             hiddenFrom="lg"
             color="var(--mantine-color-verde-6)"
-            aria-label={menuOpened ? 'Close menu' : 'Open menu'}
+            aria-label={menuOpened ? 'Cerrar menú' : 'Abrir menú'}
           />
         </Group>
       </Container>

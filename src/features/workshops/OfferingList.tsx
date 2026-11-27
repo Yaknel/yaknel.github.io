@@ -46,7 +46,7 @@ export function OfferingList({ items, buttonColor }: OfferingListProps) {
                       size="sm"
                       c="inherit"
                       icon={<IconCalendarEvent size={16} aria-hidden="true" />}
-                      aria-label="Próximas fechas / Upcoming dates"
+                      aria-label="Próximas fechas"
                     >
                       {dates.map((d) => (
                         <List.Item key={d}>{formatDate(d)}</List.Item>

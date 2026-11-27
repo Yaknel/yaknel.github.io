@@ -5,7 +5,7 @@ import { NewsletterSection, WorkshopSections } from '@/features/sections'
 export default function WorkshopPage() {
   return (
     <>
-      <Seo title="Workshop" description={site.workshop.lead} />
+      <Seo title="Taller" description={site.workshop.lead} />
       <WorkshopSections />
       <NewsletterSection />
     </>

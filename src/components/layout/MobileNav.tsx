@@ -19,7 +19,7 @@ export function MobileNav({ opened, onClose }: MobileNavProps) {
       hiddenFrom="lg"
       classNames={{ title: classes.title, close: classes.close }}
     >
-      <Stack component="nav" aria-label="Main" gap={0}>
+      <Stack component="nav" aria-label="Principal" gap={0}>
         {site.nav.map((item) => (
           <NavLink key={item.to} to={item.to} end className={classes.link} onClick={onClose}>
             {item.label}

@@ -5,15 +5,15 @@ export function RouteError() {
   const error = useRouteError()
   const message = isRouteErrorResponse(error)
     ? `${error.status} · ${error.statusText}`
-    : 'Something went wrong loading this page.'
+    : 'Algo se ha torcido al cargar esta página.'
 
   return (
     <Container size="sm" py={120}>
       <Stack align="flex-start">
-        <Title order={1}>Oops</Title>
+        <Title order={1}>Ups</Title>
         <Text size="lg">{message}</Text>
         <Button component={Link} to="/">
-          Back home
+          Volver al inicio
         </Button>
       </Stack>
     </Container>

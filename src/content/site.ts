@@ -23,17 +23,17 @@ export interface ExternalItem {
 export const site = {
   name: 'Yaknel Elorza',
   fullName: 'Yaknel Elorza',
-  tagline: 'Writer · Poet · Facilitator',
+  tagline: 'Escritora · Poeta · Facilitadora',
   motto: 'In the middle of the cosmic crossing of our Universe',
-  location: 'Berlin | Worldwide',
+  location: 'Berlín | Mundo',
   nav: [
-    { label: 'Home', to: '/' },
-    { label: 'Writing', to: '/writing' },
-    { label: 'Workshop', to: '/workshop' },
-    { label: 'Work with me', to: '/work-with-me' },
-    { label: 'Speaking', to: '/speaking' },
-    { label: 'About', to: '/about' },
-    { label: 'Contact', to: '/contact' },
+    { label: 'Inicio', to: '/' },
+    { label: 'Escritura', to: '/escritura' },
+    { label: 'Taller', to: '/taller' },
+    { label: 'Trabaja conmigo', to: '/trabaja-conmigo' },
+    { label: 'Charlas', to: '/charlas' },
+    { label: 'Sobre mí', to: '/sobre-mi' },
+    { label: 'Contacto', to: '/contacto' },
   ] satisfies NavItem[],
   // Las que estén vacías no se muestran.
   socials: [
@@ -43,73 +43,73 @@ export const site = {
     { label: 'Substack', href: 'https://yaknel.substack.com' },
   ] satisfies SocialLink[],
 
-  /* ---------- Home ---------- */
+  /* ---------- Inicio ---------- */
   hero: {
-    eyebrow: 'Yaknel Elorza · Writer, poet & facilitator',
-    title: 'Words that inhabit the body',
-    lead: 'Caribbean-Venezuelan writer and poet based in Berlin. I write, I teach creative and somatic writing, and I accompany other writers and projects from the first idea to the finished page.',
+    eyebrow: 'Yaknel Elorza · Escritora, poeta y facilitadora',
+    title: 'Palabras que habitan la cuerpa',
+    lead: 'Escritora y poeta venezolana caribeña en Berlín. Escribo, doy talleres de escritura creativa y somática, y acompaño a otras escritoras y proyectos desde la primera idea hasta la página terminada.',
   },
 
-  /* ---------- Writing ---------- */
+  /* ---------- Escritura ---------- */
   writing: {
-    title: 'Writing',
-    lead: 'Books, poetry, publications and conversations.',
-    cta: 'Explore my writing',
+    title: 'Escritura',
+    lead: 'Libros, poesía, publicaciones y conversaciones.',
+    cta: 'Explora mi escritura',
     book: {
-      kind: 'Book',
+      kind: 'Libro',
       title: 'Bruma',
       description:
-        'Mujeres que aman a mujeres, la posibilidad de la otra, la belleza, lo abrupto. My first published book: a self-reflective, hybrid autofiction where poetry meets fantasy.',
+        'Mujeres que aman a mujeres, la posibilidad de la otra, la belleza, lo abrupto. Mi primer libro publicado: una autoficción híbrida y autorreflexiva donde la poesía se encuentra con la fantasía.',
       href: 'https://laninaazul.es/tienda/bruma/',
-      cta: 'Get the book',
+      cta: 'Consigue el libro',
     },
     poetry: {
-      kind: 'Poetry',
+      kind: 'Poesía',
       title: 'Sigo Aquí',
       description:
-        'Esfumarme en el tiempo a través de la palabra habitando la cuerpa. My poetry, in your inbox, on Substack.',
+        'Esfumarme en el tiempo a través de la palabra habitando la cuerpa. Mi poesía, en tu correo, a través de Substack.',
       href: 'https://yaknel.substack.com',
-      cta: 'Read on Substack',
+      cta: 'Leer en Substack',
     },
     publication: {
-      kind: 'Publication',
+      kind: 'Publicación',
       title: 'I don’t want to quote anyone but myself',
       description:
-        'An essay on exile, memory and reclaiming the self, published by Futuress (Basel, Switzerland).',
+        'Un ensayo sobre el exilio, la memoria y la recuperación de una misma, publicado en la revista Futuress (Basilea, Suiza).',
       href: 'https://futuress.org/stories/anyone-but-myself/',
-      cta: 'Read the essay',
+      cta: 'Leer el ensayo',
     },
     media: [
       {
         title: 'Meditation, tattoos and the inevitability of pain',
-        kind: 'Interview',
+        kind: 'Entrevista',
         description:
-          'A conversation with Michael Stone — Buddhist teacher, yogi and psychotherapist — on meditation and pain in relation to tattoos.',
+          'Una conversación con Michael Stone —maestro budista, yogui y psicoterapeuta— sobre la meditación y el dolor en relación con los tatuajes.',
         href: 'https://yaknel.com/michael-stone-meditation-tattoos-and-the-inevitability-of-pain/',
-        cta: 'Read',
+        cta: 'Leer',
       },
       {
         title: 'Intersectional Island',
-        kind: 'Podcast interview',
-        description: 'With Rodrigo Zorzanelli, on poetry as survival.',
+        kind: 'Entrevista en podcast',
+        description: 'Con Rodrigo Zorzanelli, sobre la poesía como supervivencia.',
         href: 'https://open.spotify.com/episode/5iNFVrwlUDhtvpCJTMU8Ga',
-        cta: 'Listen',
+        cta: 'Escuchar',
       },
       {
         title: 'Da Yaknel Podcast',
         kind: 'Podcast',
-        description: 'Creative processes through authenticity.',
+        description: 'Procesos creativos a través de la autenticidad.',
         href: 'https://www.youtube.com/@yaknelelorza',
-        cta: 'Watch',
+        cta: 'Ver',
       },
     ] satisfies ExternalItem[],
   },
 
-  /* ---------- Workshop ---------- */
+  /* ---------- Taller ---------- */
   workshop: {
-    title: 'Creative & somatic writing workshops',
-    lead: 'Writing from the body: attention, breath, memory and word. Small groups, in Spanish, online and in Berlin.',
-    cta: 'Join workshop',
+    title: 'Talleres de escritura creativa y somática',
+    lead: 'Escribir desde la cuerpa: atención, respiración, memoria y palabra. Grupos pequeños, en español, online y en Berlín.',
+    cta: 'Únete al taller',
     faqTitle: 'Preguntas frecuentes',
     // De tu página de talleres anterior. Completa o cambia lo que haga falta.
     faq: [
@@ -133,87 +133,87 @@ export const site = {
     ],
   },
 
-  /* ---------- Work with me ---------- */
+  /* ---------- Trabaja conmigo ---------- */
   workWithMe: {
-    title: 'Work with me',
-    lead: 'One-to-one editorial accompaniment and creative collaborations.',
-    cta: 'Contact / book me',
+    title: 'Trabaja conmigo',
+    lead: 'Acompañamiento editorial uno a uno y colaboraciones creativas.',
+    cta: 'Contáctame / reserva',
     editorial: {
       kind: '1:1',
-      title: 'Editorial service',
+      title: 'Acompañamiento editorial',
       description:
-        'Personal accompaniment for your book, poetry collection or hybrid project: structure, voice and editing, in sessions shaped around your process.',
+        'Acompañamiento personal para tu libro, poemario o proyecto híbrido: estructura, voz y edición, en sesiones que se adaptan a tu proceso.',
     },
     collaboration: {
-      kind: 'Collaboration',
-      title: 'Creative collaboration',
+      kind: 'Colaboración',
+      title: 'Colaboración creativa',
       description:
-        'Texts and poetic world-building for artistic, cultural and editorial projects — like my work with Becoming Studio and Control Wars Laboratorio (Porto Design Biennale ’21).',
+        'Textos y construcción poética de mundos para proyectos artísticos, culturales y editoriales, como mi trabajo con Becoming Studio y Control Wars Laboratorio (Porto Design Biennale ’21).',
     },
   },
 
-  /* ---------- Public speaking ---------- */
+  /* ---------- Charlas y presentaciones ---------- */
   speaking: {
-    title: 'Public speaking & MC',
-    lead: 'Host, moderator and speaker for literary evenings, festivals and community gatherings — in Spanish, English and German.',
-    cta: 'Contact / book me',
-    topicsTitle: 'Topics',
+    title: 'Charlas y presentaciones',
+    lead: 'Presentadora, moderadora y ponente en lecturas literarias, festivales y encuentros comunitarios, en español, inglés y alemán.',
+    cta: 'Contáctame / reserva',
+    topicsTitle: 'Temas',
     // Borrador a partir de tu obra: cámbialos por los tuyos.
     topics: [
-      'Writing from the body: somatic writing',
-      'Exile, memory and the Caribbean diaspora',
-      'Creativity as everyday activism',
-      'Autofiction and hybrid forms',
+      'Escribir desde la cuerpa: escritura somática',
+      'Exilio, memoria y diáspora caribeña',
+      'La creatividad como activismo cotidiano',
+      'Autoficción y formas híbridas',
     ],
-    eventsTitle: 'Events & companies',
+    eventsTitle: 'Eventos y empresas',
     // Añade aquí los eventos que has presentado, p. ej. 'Nombre del evento · Ciudad, año'.
     // Mientras la lista esté vacía, este apartado no se muestra.
     events: [] as string[],
   },
 
-  /* ---------- About ---------- */
+  /* ---------- Sobre mí ---------- */
   about: {
-    title: 'About me',
+    title: 'Sobre mí',
     heading: 'Donde se vive para dejar de existir',
     roles: [
-      'Writer',
-      'Author',
-      'Editorial partner',
-      'Collaborator',
-      'Facilitator',
-      'Thought leader',
+      'Escritora',
+      'Autora',
+      'Acompañante editorial',
+      'Colaboradora',
+      'Facilitadora',
+      'Referente de pensamiento',
     ],
     story:
-      'I am a queer Caribbean-Venezuelan writer and poet living in Berlin. I write across Spanish, English and German, between exile, memory and the body.',
+      'Soy escritora y poeta queer venezolana caribeña y vivo en Berlín. Escribo entre el español, el inglés y el alemán, entre el exilio, la memoria y la cuerpa.',
     philosophy:
-      'My artistic practice is linked to the activism of everyday life: I want to foster creativity and authenticity through both individual and collective experiences.',
+      'Mi práctica artística se relaciona con el activismo de la vida cotidiana, buscando fomentar la creatividad y la autenticidad a través de experiencias tanto individuales como colectivas.',
     experience: [
-      'My book Bruma is a self-reflective, hybrid autofiction where poetry meets fantasy. My most recent publication, I don’t want to quote anyone but myself, appeared in Futuress (Basel, Switzerland).',
-      'I collaborated with Becoming Studio on poetic world-building practices, and on Control Wars Laboratorio with Alter-Realities at Porto Design Biennale ’21.',
-      'I lead weekly creative writing workshops in Spanish in collaboration with The Poetry Project Berlin.',
+      'Mi libro Bruma es una forma autorreflexiva e híbrida de autoficción donde la poesía se encuentra con la fantasía. Mi publicación más reciente, I don’t want to quote anyone but myself, apareció en la revista Futuress (Basilea, Suiza).',
+      'Colaboré con Becoming Studio en prácticas de construcción poética de mundos, y en Control Wars Laboratorio, junto con Alter-Realities, en la Porto Design Biennale ’21.',
+      'Dirijo talleres semanales de escritura creativa en español en colaboración con The Poetry Project Berlin.',
     ],
-    credentialsTitle: 'Training',
+    credentialsTitle: 'Formación',
     credentials: [
-      'Diploma in Creative Writing — FLACSO, Dominican Republic (2022)',
-      'Coding Resistance fellowship — The Futuress (2021)',
+      'Diplomado en Escritura Creativa — FLACSO, República Dominicana (2022)',
+      'Fellowship Coding Resistance — The Futuress (2021)',
       'The Way of Writing — Natalie Goldberg (2019–20)',
-      'BA in Art & Photography — Universitat Abat Oliba, Barcelona (2010)',
+      'Grado en Arte y Fotografía — Universitat Abat Oliba, Barcelona (2010)',
     ],
-    cta: 'More about me',
+    cta: 'Más sobre mí',
   },
 
-  /* ---------- Newsletter & contact ---------- */
+  /* ---------- Newsletter y contacto ---------- */
   newsletter: {
     title: 'Sigo Aquí',
-    lead: 'Sign up for my newsletter: poetry, workshops and news, straight to your inbox.',
-    cta: 'Sign up',
+    lead: 'Suscríbete a mi newsletter: poesía, talleres y novedades, directo en tu correo.',
+    cta: 'Suscríbete',
   },
   contact: {
-    title: 'Contact',
-    lead: 'For workshops, editorial work, collaborations, events and press.',
+    title: 'Contacto',
+    lead: 'Para talleres, acompañamiento editorial, colaboraciones, eventos y prensa.',
   },
   shop: {
-    title: 'Shop',
-    lead: 'Books and materials.',
+    title: 'Tienda',
+    lead: 'Libros y materiales.',
   },
 } as const

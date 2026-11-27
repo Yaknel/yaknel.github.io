@@ -154,10 +154,10 @@ export function HeroSection() {
           {site.hero.lead}
         </Text>
         <Group gap="sm" mt="xl">
-          <Button component={Link} to="/writing" color="tinta" size="md">
+          <Button component={Link} to="/escritura" color="tinta" size="md">
             {site.writing.cta}
           </Button>
-          <Button component={Link} to="/workshop" color="white" variant="outline" size="md">
+          <Button component={Link} to="/taller" color="white" variant="outline" size="md">
             {site.workshop.cta}
           </Button>
         </Group>
@@ -178,16 +178,16 @@ export function HomeOverview() {
         kind={site.writing.title}
         title={site.writing.book.title}
         text={site.writing.book.description}
-        ctas={[{ label: site.writing.cta, href: '/writing' }]}
+        ctas={[{ label: site.writing.cta, href: '/escritura' }]}
       />
       <Feature
         tone="verde"
         photo={photos.workshop}
         id="home-workshop"
-        kind="Workshop"
+        kind="Taller"
         title={site.workshop.title}
         text={site.workshop.lead}
-        ctas={[{ label: site.workshop.cta, href: '/workshop' }]}
+        ctas={[{ label: site.workshop.cta, href: '/taller' }]}
       />
       <Feature
         tone="azul"
@@ -195,18 +195,18 @@ export function HomeOverview() {
         photoFirst
         id="home-work"
         kind={site.workWithMe.title}
-        title={`${site.workWithMe.editorial.title} & ${site.workWithMe.collaboration.title.toLowerCase()}`}
+        title={`${site.workWithMe.editorial.title} y ${site.workWithMe.collaboration.title.toLowerCase()}`}
         text={site.workWithMe.lead}
-        ctas={[{ label: site.workWithMe.cta, href: '/work-with-me' }]}
+        ctas={[{ label: site.workWithMe.cta, href: '/trabaja-conmigo' }]}
       />
       <Feature
         tone="lila"
         photo={photos.speaking}
         id="home-speaking"
-        kind="Public speaking"
+        kind="Charlas y presentaciones"
         title={site.speaking.title}
         text={site.speaking.lead}
-        ctas={[{ label: site.speaking.cta, href: '/speaking' }]}
+        ctas={[{ label: site.speaking.cta, href: '/charlas' }]}
       />
       <Feature
         tone="mostaza"
@@ -216,7 +216,7 @@ export function HomeOverview() {
         kind={site.about.title}
         title={site.about.heading}
         text={site.about.story}
-        ctas={[{ label: site.about.cta, href: '/about' }]}
+        ctas={[{ label: site.about.cta, href: '/sobre-mi' }]}
       />
     </>
   )
@@ -260,7 +260,7 @@ export function WritingSections() {
       <Band tone="blanco" labelledBy="media-title">
         <Reveal effect="up">
           <Title id="media-title" order={2} c="verde.6" ta="center" mb={40}>
-            Selected media
+            Medios
           </Title>
         </Reveal>
         <SimpleGrid cols={{ base: 1, sm: 3 }} spacing={{ base: 40, sm: 24 }}>
@@ -309,7 +309,7 @@ export function WorkshopSections() {
         photo={photos.workshop}
         id="workshop-title"
         order={1}
-        kind="Workshop"
+        kind="Taller"
         title={site.workshop.title}
         text={site.workshop.lead}
         ctas={[{ label: site.workshop.cta, href: '#next' }]}
@@ -317,11 +317,11 @@ export function WorkshopSections() {
       />
       <Band tone="blanco" id="next" labelledBy="next-title">
         <Reveal effect="up">
-          <SectionTitle id="next-title" title="Next workshops" />
+          <SectionTitle id="next-title" title="Próximos talleres" />
         </Reveal>
         <OfferingList items={items} buttonColor="verde" />
       </Band>
-      <Gallery photos={photos.gallery} label="Workshop photos" />
+      <Gallery photos={photos.gallery} label="Fotos de los talleres" />
       <TestimonialsSection items={testimonials.workshop} tone="lila" />
       <FaqSection />
     </>
@@ -354,7 +354,7 @@ export function TestimonialsSection({ items, tone }: { items: Testimonial[]; ton
   return (
     <Band tone="blanco" labelledBy="testimonials-title">
       <Title id="testimonials-title" order={2} c="verde.6" ta="center" mb={40}>
-        Testimonials
+        Testimonios
       </Title>
       <SimpleGrid cols={{ base: 1, md: Math.min(items.length, 3) }} spacing={24}>
         {items.map((t, i) => (
@@ -393,7 +393,7 @@ export function WorkWithMeSections() {
         kind={editorial.kind}
         title={editorial.title}
         text={editorial.description}
-        ctas={[{ label: cta, href: '/contact?asunto=editorial' }]}
+        ctas={[{ label: cta, href: '/contacto?asunto=editorial' }]}
       />
       <Feature
         tone="verde"
@@ -403,7 +403,7 @@ export function WorkWithMeSections() {
         kind={collaboration.kind}
         title={collaboration.title}
         text={collaboration.description}
-        ctas={[{ label: cta, href: '/contact?asunto=colaboracion' }]}
+        ctas={[{ label: cta, href: '/contacto?asunto=colaboracion' }]}
       />
       <TestimonialsSection items={testimonials.workWithMe} tone="mostaza" />
     </>
@@ -443,7 +443,7 @@ export function SpeakingSections() {
         </div>
       )}
       <Group>
-        <Button component={Link} to="/contact?asunto=speaking" color="tinta">
+        <Button component={Link} to="/contacto?asunto=charlas" color="tinta">
           {cta}
         </Button>
       </Group>
@@ -469,7 +469,7 @@ export function AboutSections() {
       </Split>
       <Split tone="azul" photo={photos.aboutMore} labelledBy="about-experience">
         <Title id="about-experience" order={2}>
-          Experience
+          Experiencia
         </Title>
         <Group gap={8}>
           {a.roles.map((r) => (
@@ -494,7 +494,7 @@ export function AboutSections() {
           </List>
         </div>
         <Group>
-          <Button component={Link} to="/work-with-me" color="mostaza">
+          <Button component={Link} to="/trabaja-conmigo" color="mostaza">
             {site.workWithMe.title}
           </Button>
         </Group>

@@ -37,7 +37,7 @@ export function Footer() {
             {site.motto}
           </Text>
 
-          <Group component="nav" aria-label="Social media" gap="lg">
+          <Group component="nav" aria-label="Redes sociales" gap="lg">
             {socials.map((s, i) => {
               const Icon = icons[s.label]
               return (
@@ -59,14 +59,14 @@ export function Footer() {
             })}
           </Group>
 
-          <Button component={Link} to="/contact" color="lila" w={150}>
-            CONTACT
+          <Button component={Link} to="/contacto" color="lila" w={150}>
+            CONTACTO
           </Button>
         </Group>
 
         <Group justify="space-between" mt={48} gap="md">
           <Text size="sm" fw={700} c="lila.6">
-            ©{YEAR} {site.fullName}. All Rights Reserved
+            ©{YEAR} {site.fullName}. Todos los derechos reservados
           </Text>
           <Text size="sm" c="verde.6">
             {site.location}

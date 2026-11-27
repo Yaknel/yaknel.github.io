@@ -9,7 +9,7 @@ export function ProductList({ items, buttonColor }: { items: Product[]; buttonCo
   return (
     <SimpleGrid cols={{ base: 1, sm: 2, md: 3 }} spacing={48} mt={48}>
       {items.map((p, i) => {
-        const href = p.checkoutUrl || `/contact?asunto=${p.id}`
+        const href = p.checkoutUrl || `/contacto?asunto=${p.id}`
         return (
           <Reveal key={p.id} effect="up" delay={i * 120}>
             <Stack component="article" gap="sm" align="flex-start">
