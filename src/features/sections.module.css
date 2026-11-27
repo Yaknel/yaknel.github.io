@@ -99,7 +99,17 @@
   }
 }
 
-.aboutStrip {
-  max-width: 440px;
-  margin-block: 0.5rem;
+.aboutGrid {
+  align-items: center;
+}
+
+.aboutArch {
+  max-width: 260px;
+
+  @media (min-width: $mantine-breakpoint-md) {
+    max-width: 340px;
+  }
+
+  margin-inline: auto;
+  border: 6px solid white;
 }

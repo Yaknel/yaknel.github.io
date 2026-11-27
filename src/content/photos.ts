@@ -59,6 +59,7 @@ export const photos = {
   },
   about: img('img_20210806_102800.jpg', 'Polaroid de Yaknel en el invernadero'),
   aboutStrip: img('about-strip.jpg', 'Yaknel en el invernadero', '50% 40%'),
+  aboutArch: img('about-strip.jpg', 'Yaknel en el invernadero', '50% 30%'),
   workWithMeHome: img('sara.jpg', 'Pintura colorida de una colaboración creativa con Sara'),
   aboutMore: img('img_20191020_172048.jpg', 'Retrato con abrigo verde'),
   newsletter: img('img_20201204_105005.jpg', 'Yaknel sentada entre plantas'),

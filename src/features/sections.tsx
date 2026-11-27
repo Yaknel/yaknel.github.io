@@ -228,23 +228,36 @@ function AboutTeaser() {
     <Box component="section" aria-labelledby="home-about-title" className={classes.newsletter}>
       <Container size="xl">
         <div className={classes.aboutInner}>
-          <Reveal effect="up">
-            <Stack align="center" ta="center" gap="md">
-              <Text size="sm" fw={700} className={classes.kind}>
-                {site.about.title}
-              </Text>
-              <Title id="home-about-title" order={2}>
-                {site.about.heading}
-              </Title>
-              <PhotoFrame photo={photos.aboutStrip} ratio={2.6} className={classes.aboutStrip} />
-              <Text size="lg" maw={640}>
-                {site.about.story}
-              </Text>
-              <Button component={Link} to="/sobre-mi" color="verde" size="md" mt="xs">
-                {site.about.cta}
-              </Button>
-            </Stack>
-          </Reveal>
+          <SimpleGrid
+            cols={{ base: 1, md: 2 }}
+            spacing={{ base: 40, md: 64 }}
+            maw={960}
+            mx="auto"
+            className={classes.aboutGrid}
+          >
+            <Reveal effect="up">
+              <PhotoFrame
+                photo={photos.aboutArch}
+                ratio={0.8}
+                shape="arch"
+                className={classes.aboutArch}
+              />
+            </Reveal>
+            <Reveal effect="up" delay={120}>
+              <Stack align="center" ta="center" gap="md">
+                <Text size="sm" fw={700} className={classes.kind}>
+                  {site.about.title}
+                </Text>
+                <Title id="home-about-title" order={2}>
+                  {site.about.heading}
+                </Title>
+                <Text size="lg">{site.about.story}</Text>
+                <Button component={Link} to="/sobre-mi" color="verde" size="md" mt="xs">
+                  {site.about.cta}
+                </Button>
+              </Stack>
+            </Reveal>
+          </SimpleGrid>
         </div>
       </Container>
     </Box>
