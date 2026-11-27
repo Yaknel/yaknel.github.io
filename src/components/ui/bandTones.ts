@@ -1,17 +1,15 @@
-/** Colores de franja disponibles. Cada uno define su color de texto y de botones con buen contraste. */
-export type BandTone =
-  'morado' | 'lila' | 'rosa' | 'mostaza' | 'bosque' | 'azul' | 'noche' | 'blanco'
+/** Colores de bloque disponibles (paleta C001). Cada uno define texto, título y botón con buen contraste. */
+export type BandTone = 'azul' | 'verde' | 'rosa' | 'mostaza' | 'lila' | 'blanco'
 
-export const darkTones: BandTone[] = ['morado', 'bosque', 'azul', 'noche']
+/** Tonos oscuros: el texto va en blanco. */
+export const darkTones: BandTone[] = ['azul', 'verde', 'rosa']
 
-/** Color de botón principal que contrasta con cada franja. */
+/** Color del botón principal sobre cada bloque. */
 export const bandAccent: Record<BandTone, string> = {
-  morado: 'mostaza',
-  lila: 'morado',
-  rosa: 'noche',
-  mostaza: 'morado',
-  bosque: 'mostaza',
   azul: 'mostaza',
-  noche: 'mostaza',
-  blanco: 'morado',
+  verde: 'mostaza',
+  rosa: 'tinta',
+  mostaza: 'verde',
+  lila: 'tinta',
+  blanco: 'lila',
 }

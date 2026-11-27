@@ -12,9 +12,9 @@ export function AppLayout() {
   const { pathname } = useLocation()
 
   return (
-    <AppShell header={{ height: 76 }} padding={0} bg="transparent">
+    <AppShell header={{ height: 84 }} padding={0} bg="transparent">
       <a className="skip-link" href="#contenido">
-        Saltar al contenido
+        Skip to content
       </a>
       <Header menuOpened={menuOpened} onToggleMenu={menu.toggle} />
       <MobileNav opened={menuOpened} onClose={menu.close} />

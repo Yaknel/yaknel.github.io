@@ -7,13 +7,15 @@ React 19 · TypeScript (strict) · Mantine 9 · React Router 8 · Vite · Vitest
 
 | Qué | Dónde |
 | --- | --- |
-| Textos generales, bio, redes, menú | `src/content/site.ts` |
-| Talleres y servicios (con fechas) | `src/content/workshops.ts` |
-| Productos de la tienda | `src/content/products.ts` |
-| Colores (paleta Hilma af Klint) | `palette` en `src/app/theme.ts` |
-| Color de cada franja | `tone="..."` en `src/features/sections.tsx` |
-| Imágenes | `public/images/` |
-| Fuentes (Micky, Square Sans) | `public/fonts/` |
+| Textos de todas las páginas, menú y redes | `src/content/site.ts` |
+| Talleres (con fechas) | `src/content/workshops.ts` |
+| Testimonios (vacíos = no se muestran) | `src/content/testimonials.ts` |
+| Fotos de cada sección | `src/content/photos.ts` (archivos en `public/images/`) |
+| Productos de la tienda (/shop) | `src/content/products.ts` |
+| Colores (paleta C001) | `palette` en `src/app/theme.ts` |
+| Fuentes | Micky en `public/fonts/`; Alegreya Sans y Montserrat por npm |
+
+Páginas: Home · Writing · Workshop · Work with me · Speaking · About · Contact (además de /newsletter y /shop, fuera del menú). Las URLs antiguas en español (/talleres, /contacto…) redirigen a las nuevas.
 
 Las fechas de taller pasadas se ocultan solas.
 

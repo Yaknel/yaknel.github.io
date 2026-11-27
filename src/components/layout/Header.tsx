@@ -1,4 +1,4 @@
-import { AppShell, Burger, Button, Container, Group, Text } from '@mantine/core'
+import { AppShell, Burger, Container, Group } from '@mantine/core'
 import { useWindowScroll } from '@mantine/hooks'
 import { Link, NavLink } from 'react-router'
 import { site } from '@/content/site'
@@ -9,38 +9,31 @@ interface HeaderProps {
   onToggleMenu: () => void
 }
 
+/** Cabecera blanca como en yaknel.com: logo en Micky verde y menú en texto fino. */
 export function Header({ menuOpened, onToggleMenu }: HeaderProps) {
   const [scroll] = useWindowScroll()
   return (
     <AppShell.Header className={classes.header} data-scrolled={scroll.y > 24 || undefined}>
-      <Container h="100%">
-        <Group h="100%" justify="space-between" wrap="nowrap">
-          <Link to="/" className={classes.brand} aria-label={`${site.name}, ir al inicio`}>
-            <Text component="span" className={classes.logo}>
-              {site.name}
-            </Text>
-            <Text component="span" size="sm" className={classes.tagline} visibleFrom="xs">
-              {site.tagline}
-            </Text>
+      <Container size="xl" h="100%">
+        <Group h="100%" justify="space-between" wrap="nowrap" gap="xl">
+          <Link to="/" className={classes.logo} aria-label={`${site.name}, home`}>
+            {site.name}
           </Link>
 
-          <Group component="nav" aria-label="Principal" gap={4} visibleFrom="md">
-            {site.nav.slice(1).map((item) => (
-              <NavLink key={item.to} to={item.to} className={classes.link}>
+          <Group component="nav" aria-label="Main" gap={2} visibleFrom="lg" wrap="nowrap">
+            {site.nav.map((item) => (
+              <NavLink key={item.to} to={item.to} end className={classes.link}>
                 {item.label}
               </NavLink>
             ))}
-            <Button component={Link} to="/suscribete" color="mostaza" ml="sm">
-              Suscríbete
-            </Button>
           </Group>
 
           <Burger
             opened={menuOpened}
             onClick={onToggleMenu}
-            hiddenFrom="md"
-            color="white"
-            aria-label={menuOpened ? 'Cerrar menú' : 'Abrir menú'}
+            hiddenFrom="lg"
+            color="var(--mantine-color-verde-6)"
+            aria-label={menuOpened ? 'Close menu' : 'Open menu'}
           />
         </Group>
       </Container>

@@ -1,3 +1,7 @@
+import '@fontsource/alegreya-sans/400.css'
+import '@fontsource/alegreya-sans/400-italic.css'
+import '@fontsource/alegreya-sans/700.css'
+import '@fontsource-variable/montserrat'
 import '@mantine/core/styles.css'
 import '@mantine/notifications/styles.css'
 import '@/styles/global.css'

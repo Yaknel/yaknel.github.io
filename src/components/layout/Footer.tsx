@@ -1,44 +1,77 @@
-import { Anchor, Button, Container, Group, Stack, Text } from '@mantine/core'
+import { Button, Container, Group, Text } from '@mantine/core'
+import {
+  IconBrandInstagram,
+  IconBrandLinkedin,
+  IconBrandMedium,
+  IconBrandSpotify,
+  IconBrandYoutube,
+  IconNews,
+} from '@tabler/icons-react'
+import type { ComponentType } from 'react'
 import { Link } from 'react-router'
-import { site } from '@/content/site'
+import { site, type SocialLink } from '@/content/site'
 import classes from './Footer.module.css'
 
 const YEAR = new Date().getFullYear()
+
+const icons: Record<SocialLink['label'], ComponentType<{ size?: number; stroke?: number }>> = {
+  LinkedIn: IconBrandLinkedin,
+  YouTube: IconBrandYoutube,
+  Instagram: IconBrandInstagram,
+  Substack: IconNews,
+  Spotify: IconBrandSpotify,
+  Medium: IconBrandMedium,
+}
+
+/** Colores de los cuadrados de redes, en el orden de la paleta (como en yaknel.com). */
+const tileColors = ['mostaza', 'azul', 'rosa', 'lila', 'verde']
 
 export function Footer() {
   const socials = site.socials.filter((s) => s.href)
 
   return (
     <footer className={classes.footer}>
-      <Container py={64} className={classes.content}>
-        <Group justify="space-between" align="flex-start" gap="xl">
-          <Stack gap="xs" maw={300}>
-            <Text className={classes.name}>{site.name}</Text>
-            <Text className={classes.motto}>{site.motto}</Text>
-          </Stack>
+      <Container size="lg" py={56}>
+        <Group justify="space-between" align="center" gap="xl">
+          <Text className={classes.motto} maw={260}>
+            {site.motto}
+          </Text>
 
-          <Stack gap="md" align="flex-start">
-            <Group component="nav" aria-label="Redes" gap="lg">
-              {socials.map((s) => (
-                <Anchor
+          <Group component="nav" aria-label="Social media" gap="lg">
+            {socials.map((s, i) => {
+              const Icon = icons[s.label]
+              return (
+                <a
                   key={s.label}
                   href={s.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  c="white"
+                  aria-label={s.label}
+                  title={s.label}
+                  className={classes.tile}
+                  style={{
+                    backgroundColor: `var(--mantine-color-${tileColors[i % tileColors.length]}-6)`,
+                  }}
                 >
-                  {s.label}
-                </Anchor>
-              ))}
-            </Group>
-            <Button component={Link} to="/contacto" color="lila">
-              Contacto
-            </Button>
-          </Stack>
+                  <Icon size={26} stroke={1.8} />
+                </a>
+              )
+            })}
+          </Group>
+
+          <Button component={Link} to="/contact" color="lila" w={150}>
+            CONTACT
+          </Button>
         </Group>
-        <Text size="sm" c="lila.3" mt={48} fw={700}>
-          © {YEAR} {site.fullName}
-        </Text>
+
+        <Group justify="space-between" mt={48} gap="md">
+          <Text size="sm" fw={700} c="lila.6">
+            ©{YEAR} {site.fullName}. All Rights Reserved
+          </Text>
+          <Text size="sm" c="verde.6">
+            {site.location}
+          </Text>
+        </Group>
       </Container>
     </footer>
   )

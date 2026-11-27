@@ -1,7 +1,7 @@
 /**
  * Tienda. GitHub Pages es estático, así que el pago lo gestiona un servicio externo:
  * crea un "Payment Link" en Stripe (o Gumroad, Ko-fi...) y pega la URL en `checkoutUrl`.
- * Si `checkoutUrl` está vacío, el botón lleva a /contacto.
+ * Si `checkoutUrl` está vacío, el botón lleva a /contact.
  * Las imágenes van en public/images/ (p. ej. "/images/bruma.jpg").
  */
 export interface Product {
@@ -12,7 +12,7 @@ export interface Product {
   image?: string
   label?: string
   checkoutUrl?: string
-  color: 'rosa' | 'mostaza' | 'lila' | 'azul' | 'morado' | 'verde'
+  color: 'rosa' | 'mostaza' | 'lila' | 'azul' | 'verde'
 }
 
 export const products: Product[] = [

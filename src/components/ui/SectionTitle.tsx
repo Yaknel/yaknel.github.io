@@ -7,15 +7,15 @@ interface SectionTitleProps {
   order?: 1 | 2
 }
 
-/** Título de sección en Micky, mayúsculas, como en yaknel.com. Hereda el color de la franja. */
+/** Título de sección en Micky verde sobre fondo blanco, como en yaknel.com. */
 export function SectionTitle({ id, title, lead, order = 2 }: SectionTitleProps) {
   return (
     <>
-      <Title id={id} order={order} c="inherit">
+      <Title id={id} order={order} c="verde.6">
         {title}
       </Title>
       {lead && (
-        <Text mt="sm" maw={620} c="inherit" className="subtitle">
+        <Text mt="sm" maw={620} c="tinta.5" className="subtitle">
           {lead}
         </Text>
       )}

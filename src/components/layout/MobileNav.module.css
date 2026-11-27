@@ -1,26 +1,23 @@
-.content {
-  background-color: var(--mantine-color-morado-7);
-  color: white;
-}
-
 .close {
-  color: white;
+  color: var(--mantine-color-verde-6);
 }
 
 .title {
   font-family: var(--mantine-font-family-headings);
   font-size: 1.8rem;
-  color: var(--mantine-color-mostaza-6);
+  color: var(--mantine-color-verde-6);
 }
 
 .link {
-  padding: 0.8rem 0;
-  color: white;
+  padding: 0.85rem 0;
+  color: var(--mantine-color-tinta-6);
   text-decoration: none;
-  font-size: 1.25rem;
-  border-bottom: 1px solid rgb(255 255 255 / 0.15);
+  font-family: 'Montserrat Variable', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 300;
+  border-bottom: 1px solid var(--mantine-color-gray-2);
 
   &[aria-current='page'] {
-    color: var(--mantine-color-mostaza-6);
+    color: var(--mantine-color-verde-6);
   }
 }

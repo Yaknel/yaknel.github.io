@@ -16,7 +16,6 @@ export function Gallery({ photos, label }: { photos: readonly Photo[]; label: st
             loading="lazy"
             decoding="async"
             className={classes.item}
-            data-shape={i % 3 === 0 ? 'arch' : i % 3 === 1 ? 'rect' : 'pill'}
           />
         ))}
       </div>

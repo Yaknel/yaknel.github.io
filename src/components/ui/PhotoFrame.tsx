@@ -12,11 +12,11 @@ interface PhotoFrameProps {
   priority?: boolean
 }
 
-/** Foto con marco y zoom suave al pasar el ratón. */
+/** Foto con zoom suave al pasar el ratón. Cuadrada por defecto, como en yaknel.com. */
 export function PhotoFrame({
   photo,
   shape = 'rect',
-  ratio = 4 / 5,
+  ratio = 1,
   className,
   style,
   priority = false,

@@ -2,7 +2,7 @@
  * Talleres y libros personalizados. Añade, quita o edita entradas: la web se actualiza sola.
  * - `kind: 'taller'` aparece en la franja Talleres; `kind: 'poetica'` en La poética de la historia.
  * - `dates` en formato ISO (AAAA-MM-DD); las fechas pasadas se ocultan automáticamente.
- * - `cta.href` puede ser un enlace de pago, de inscripción o "/contacto?asunto=<id>".
+ * - `cta.href` puede ser un enlace de pago, de inscripción o "/contact?asunto=<id>".
  */
 export type OfferingKind = 'taller' | 'poetica'
 
@@ -26,7 +26,7 @@ export const offerings: Offering[] = [
       'Un encuentro al mes, unido por un hilo conductor, para escribir desde la cuerpa: atención, respiración, memoria y palabra.',
     format: 'Online · Zoom · en español',
     dates: ['2026-11-29', '2026-12-27'],
-    cta: { label: 'Quiero participar', href: '/contacto?asunto=taller-mensual' },
+    cta: { label: 'Quiero participar', href: '/contact?asunto=taller-mensual' },
   },
   {
     id: 'poetry-project',
@@ -34,7 +34,7 @@ export const offerings: Offering[] = [
     title: 'The Poetry Project Berlin',
     summary: 'Talleres semanales de escritura creativa y somática en español.',
     format: 'Presencial · Berlín',
-    cta: { label: 'Más información', href: '/contacto?asunto=poetry-project' },
+    cta: { label: 'Más información', href: '/contact?asunto=poetry-project' },
   },
   {
     id: 'cronica-de-un-si',
@@ -42,7 +42,7 @@ export const offerings: Offering[] = [
     title: 'Crónica de un Sí',
     summary: 'Un libro que narra vuestra historia de amor, como regalo de compromiso.',
     format: 'Libro impreso personalizado',
-    cta: { label: 'Pedir información', href: '/contacto?asunto=cronica-de-un-si' },
+    cta: { label: 'Pedir información', href: '/contact?asunto=cronica-de-un-si' },
   },
   {
     id: 'lo-que-quedo-dicho',
@@ -50,7 +50,7 @@ export const offerings: Offering[] = [
     title: 'Lo que Quedó Dicho',
     summary: 'Un recuerdo después de la boda tejido con los mensajes de vuestras invitadas.',
     format: 'Libro impreso personalizado',
-    cta: { label: 'Pedir información', href: '/contacto?asunto=lo-que-quedo-dicho' },
+    cta: { label: 'Pedir información', href: '/contact?asunto=lo-que-quedo-dicho' },
   },
   {
     id: 'tus-propios-votos',
@@ -58,6 +58,6 @@ export const offerings: Offering[] = [
     title: 'Tus Propios Votos',
     summary: 'Acompañamiento personalizado para que escribáis vuestros propios votos.',
     format: 'Acompañamiento 1:1',
-    cta: { label: 'Pedir información', href: '/contacto?asunto=tus-propios-votos' },
+    cta: { label: 'Pedir información', href: '/contact?asunto=tus-propios-votos' },
   },
 ]

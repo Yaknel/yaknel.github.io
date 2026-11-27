@@ -1,0 +1,80 @@
+.section {
+  background: white;
+  padding-block: 0.75rem;
+
+  &:first-child {
+    padding-top: 1.25rem;
+  }
+}
+
+.grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr;
+  grid-template-areas:
+    'photo'
+    'panel';
+
+  @media (min-width: $mantine-breakpoint-md) {
+    grid-template-columns: 5fr 7fr;
+    grid-template-areas: 'panel photo';
+    align-items: stretch;
+
+    &[data-photo-first] {
+      grid-template-columns: 7fr 5fr;
+      grid-template-areas: 'photo panel';
+    }
+  }
+}
+
+.panelWrap {
+  grid-area: panel;
+  display: flex;
+}
+
+.photo {
+  grid-area: photo;
+}
+
+.panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 2.5rem 1.75rem;
+  color: var(--mantine-color-tinta-6);
+
+  @media (min-width: $mantine-breakpoint-md) {
+    padding: 3rem clamp(2rem, 4vw, 4rem);
+  }
+
+  &[data-dark] {
+    color: white;
+  }
+
+  /* Títulos: en blanco sobre tonos oscuros, en verde profundo sobre mostaza y lila (como yaknel.com) */
+  & :where(h1, h2, h3) {
+    color: inherit;
+  }
+  &[data-tone='mostaza'] :where(h1, h2, h3),
+  &[data-tone='lila'] :where(h1, h2, h3) {
+    color: var(--mantine-color-verde-9);
+  }
+
+  &[data-tone='azul'] {
+    background: var(--mantine-color-azul-6);
+  }
+  &[data-tone='verde'] {
+    background: var(--mantine-color-verde-6);
+  }
+  &[data-tone='rosa'] {
+    background: var(--mantine-color-rosa-6);
+  }
+  &[data-tone='mostaza'] {
+    background: var(--mantine-color-mostaza-6);
+  }
+  &[data-tone='lila'] {
+    background: var(--mantine-color-lila-6);
+  }
+}

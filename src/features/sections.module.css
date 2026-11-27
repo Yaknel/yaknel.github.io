@@ -1,53 +1,58 @@
-/* Collage de portada: tres fotos superpuestas que flotan suavemente */
-.collage {
-  position: relative;
-  max-width: 520px;
-  margin-inline: auto;
-  aspect-ratio: 1 / 1.05;
+/* Etiqueta pequeña sobre los títulos ("Book", "Poetry"…) */
+.kind {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.85;
 }
 
-.collageMain {
-  position: absolute;
-  left: 18%;
-  top: 6%;
-  width: 56%;
-  z-index: 2;
-  animation: float 9s ease-in-out infinite;
+.pageTitle {
+  font-size: clamp(2.6rem, 6vw, 4rem);
 }
 
-.collageTop {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 42%;
-  z-index: 1;
-  animation: float 11s ease-in-out -3s infinite;
-}
+/* Tarjetas de "Selected media" y testimonios: bloque de color bajo la foto */
+.card,
+.quote {
+  color: white;
 
-.collageBottom {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 30%;
-  z-index: 3;
-  animation: float 10s ease-in-out -6s infinite;
-}
+  &[data-tone='lila'] {
+    background: var(--mantine-color-lila-6);
+  }
+  &[data-tone='verde'] {
+    background: var(--mantine-color-verde-6);
+  }
+  &[data-tone='rosa'] {
+    background: var(--mantine-color-rosa-6);
+  }
+  &[data-tone='azul'] {
+    background: var(--mantine-color-azul-6);
+  }
+  &[data-tone='mostaza'] {
+    background: var(--mantine-color-mostaza-6);
+    color: var(--mantine-color-tinta-6);
+  }
 
-@keyframes float {
-  50% {
-    translate: 0 -14px;
+  & h3 {
+    color: inherit;
   }
 }
 
-.narrow {
-  max-width: 420px;
-  margin-inline: auto;
+.quote {
+  height: 100%;
+  padding: 2rem;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .collageMain,
-  .collageTop,
-  .collageBottom {
-    animation: none;
+/* Etiquetas de roles en Sobre mí */
+.role {
+  padding: 0.2rem 0.7rem;
+  border: 1px solid currentColor;
+  font-size: 0.9rem;
+}
+
+.faqItem {
+  border: 1px solid var(--mantine-color-gray-3);
+  background: white;
+
+  &[data-active] {
+    border-color: var(--mantine-color-verde-6);
   }
 }

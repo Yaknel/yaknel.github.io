@@ -1,6 +1,19 @@
 import { createBrowserRouter, type RouteObject } from 'react-router'
 import { AppLayout } from '@/components/layout/AppLayout'
+import { RedirectTo } from '@/components/layout/RedirectTo'
 import { RouteError } from '@/components/layout/RouteError'
+
+const page = (load: () => Promise<{ default: React.ComponentType }>) => async () => ({
+  Component: (await load()).default,
+})
+
+const oldPaths: Record<string, string> = {
+  talleres: '/workshop',
+  'sobre-mi': '/about',
+  contacto: '/contact',
+  tienda: '/shop',
+  suscribete: '/newsletter',
+}
 
 // Cada página se carga bajo demanda (code splitting por ruta).
 export const routes: RouteObject[] = [
@@ -9,34 +22,20 @@ export const routes: RouteObject[] = [
     Component: AppLayout,
     ErrorBoundary: RouteError,
     children: [
-      {
-        index: true,
-        lazy: async () => ({ Component: (await import('@/pages/HomePage')).default }),
-      },
-      {
-        path: 'talleres',
-        lazy: async () => ({ Component: (await import('@/pages/WorkshopsPage')).default }),
-      },
-      {
-        path: 'tienda',
-        lazy: async () => ({ Component: (await import('@/pages/ShopPage')).default }),
-      },
-      {
-        path: 'sobre-mi',
-        lazy: async () => ({ Component: (await import('@/pages/AboutPage')).default }),
-      },
-      {
-        path: 'contacto',
-        lazy: async () => ({ Component: (await import('@/pages/ContactPage')).default }),
-      },
-      {
-        path: 'suscribete',
-        lazy: async () => ({ Component: (await import('@/pages/SubscribePage')).default }),
-      },
-      {
-        path: '*',
-        lazy: async () => ({ Component: (await import('@/pages/NotFoundPage')).default }),
-      },
+      { index: true, lazy: page(() => import('@/pages/HomePage')) },
+      { path: 'writing', lazy: page(() => import('@/pages/WritingPage')) },
+      { path: 'workshop', lazy: page(() => import('@/pages/WorkshopPage')) },
+      { path: 'work-with-me', lazy: page(() => import('@/pages/WorkWithMePage')) },
+      { path: 'speaking', lazy: page(() => import('@/pages/SpeakingPage')) },
+      { path: 'about', lazy: page(() => import('@/pages/AboutPage')) },
+      { path: 'contact', lazy: page(() => import('@/pages/ContactPage')) },
+      { path: 'newsletter', lazy: page(() => import('@/pages/SubscribePage')) },
+      { path: 'shop', lazy: page(() => import('@/pages/ShopPage')) },
+      ...Object.entries(oldPaths).map(([from, to]) => ({
+        path: from,
+        element: <RedirectTo to={to} />,
+      })),
+      { path: '*', lazy: page(() => import('@/pages/NotFoundPage')) },
     ],
   },
 ]

@@ -1,240 +1,555 @@
 /**
- * Secciones de la web. Cada una es una franja con su propio color de fondo.
- * La portada las encadena; cada página interna usa la suya con título <h1>.
+ * Secciones de la web. La mayoría siguen el layout de yaknel.com:
+ * un bloque de color con el texto junto a una foto cuadrada (componente Split).
  */
-import { Box, Button, Grid, Group, Stack, Text, Title } from '@mantine/core'
+import {
+  Accordion,
+  Box,
+  Button,
+  Container,
+  Group,
+  List,
+  SimpleGrid,
+  Stack,
+  Text,
+  Title,
+} from '@mantine/core'
+import type { ReactNode } from 'react'
 import { Link } from 'react-router'
 import { Band } from '@/components/ui/Band'
-import { bandAccent, type BandTone } from '@/components/ui/bandTones'
+import { bandAccent, darkTones, type BandTone } from '@/components/ui/bandTones'
 import { Gallery } from '@/components/ui/Gallery'
 import { PhotoFrame } from '@/components/ui/PhotoFrame'
 import { Reveal } from '@/components/ui/Reveal'
 import { SectionTitle } from '@/components/ui/SectionTitle'
+import { SmartButton } from '@/components/ui/SmartButton'
+import { Split } from '@/components/ui/Split'
+import type { Photo } from '@/content/photos'
 import { photos } from '@/content/photos'
 import { products } from '@/content/products'
 import { site } from '@/content/site'
-import { offerings, type OfferingKind } from '@/content/workshops'
+import { testimonials, type Testimonial } from '@/content/testimonials'
+import { offerings } from '@/content/workshops'
 import { ContactForm } from '@/features/contact/ContactForm'
 import { SubscribeEmbed } from '@/features/newsletter/SubscribeEmbed'
 import { ProductList } from '@/features/shop/ProductList'
 import { OfferingList } from '@/features/workshops/OfferingList'
 import classes from './sections.module.css'
 
-interface SectionProps {
-  /** true en páginas internas: el título pasa a ser <h1>. */
-  asPage?: boolean
+type PanelTone = Exclude<BandTone, 'blanco'>
+
+interface Cta {
+  label: string
+  href: string
 }
 
-const level = (asPage?: boolean) => (asPage ? 1 : 2)
-
-export function HeroSection() {
-  const [portrait, performance, sea] = photos.hero
-  return (
-    <Band tone="morado" labelledBy="hero-title">
-      <Grid align="center" gap={{ base: 48, md: 64 }}>
-        <Grid.Col span={{ base: 12, md: 6 }}>
-          <Stack gap="lg" className="stagger">
-            <Text fw={700} c="mostaza.3" size="sm" style={{ letterSpacing: '0.12em' }}>
-              {site.fullName} · {site.tagline}
-            </Text>
-            <Title id="hero-title" order={1} c="white">
-              {site.hero.title}
-            </Title>
-            <Text className="subtitle">{site.hero.lead}</Text>
-            <Group gap="sm">
-              <Button component={Link} to="/suscribete" size="lg" color="mostaza">
-                Suscríbete a Sigo Aquí
-              </Button>
-              <Button component={Link} to="/talleres" size="lg" variant="outline" color="white">
-                Ver talleres
-              </Button>
-            </Group>
-          </Stack>
-        </Grid.Col>
-        <Grid.Col span={{ base: 12, md: 6 }}>
-          <div className={classes.collage}>
-            {portrait && (
-              <Reveal effect="up" className={classes.collageMain}>
-                <PhotoFrame photo={portrait} shape="arch" ratio={3 / 4} priority />
-              </Reveal>
-            )}
-            {performance && (
-              <Reveal effect="right" delay={200} className={classes.collageTop}>
-                <PhotoFrame photo={performance} ratio={4 / 3} priority />
-              </Reveal>
-            )}
-            {sea && (
-              <Reveal effect="left" delay={400} className={classes.collageBottom}>
-                <PhotoFrame photo={sea} shape="pill" ratio={2 / 3} priority />
-              </Reveal>
-            )}
-          </div>
-        </Grid.Col>
-      </Grid>
-    </Band>
-  )
+interface PanelProps {
+  tone: PanelTone
+  id: string
+  kind?: string
+  title: string
+  order?: 1 | 2 | 3
+  children?: ReactNode
+  ctas?: Cta[]
 }
 
-export function NewsletterSection({ asPage }: SectionProps) {
-  return (
-    <Band tone="rosa" id="suscribirse" labelledBy="newsletter-title">
-      <Grid align="center" gap={{ base: 40, md: 72 }}>
-        <Grid.Col span={{ base: 12, md: 5 }}>
-          <Reveal effect="left">
-            <PhotoFrame
-              photo={photos.newsletter}
-              shape="arch"
-              ratio={4 / 5}
-              className={classes.narrow}
-            />
-          </Reveal>
-        </Grid.Col>
-        <Grid.Col span={{ base: 12, md: 7 }}>
-          <Reveal effect="up">
-            <Stack gap="lg">
-              <SectionTitle
-                id="newsletter-title"
-                order={level(asPage)}
-                title={site.newsletter.title}
-              />
-              <Text maw={520} className="subtitle">
-                {site.newsletter.lead}
-              </Text>
-              <SubscribeEmbed />
-            </Stack>
-          </Reveal>
-        </Grid.Col>
-      </Grid>
-    </Band>
-  )
-}
-
-const offeringBands: Record<
-  OfferingKind,
-  { tone: BandTone; copy: { title: string; lead: string } }
-> = {
-  taller: { tone: 'lila', copy: site.workshops },
-  poetica: { tone: 'mostaza', copy: site.poetica },
-}
-
-export function OfferingsSection({ kind, asPage }: SectionProps & { kind: OfferingKind }) {
-  const { tone, copy } = offeringBands[kind]
-  const items = offerings.filter((o) => o.kind === kind)
-  if (items.length === 0) return null
-  return (
-    <Band tone={tone} id={kind === 'taller' ? 'talleres' : 'poetica'} labelledBy={`${kind}-title`}>
-      <Reveal effect="up">
-        <SectionTitle
-          id={`${kind}-title`}
-          order={level(asPage)}
-          title={copy.title}
-          lead={copy.lead}
-        />
-      </Reveal>
-      <OfferingList items={items} buttonColor={bandAccent[tone]} />
-    </Band>
-  )
-}
-
-export function GallerySection() {
-  return <Gallery photos={photos.gallery} label="Galería de fotos" />
-}
-
-export function ShopSection({ asPage }: SectionProps) {
-  return (
-    <Band tone="bosque" id="tienda" labelledBy="tienda-title">
-      <Reveal effect="up">
-        <SectionTitle
-          id="tienda-title"
-          order={level(asPage)}
-          title={site.shop.title}
-          lead={site.shop.lead}
-        />
-      </Reveal>
-      <ProductList items={products} buttonColor={bandAccent.bosque} />
-    </Band>
-  )
-}
-
-export function AboutSection({ asPage }: SectionProps) {
+/** Contenido de un bloque de color: etiqueta, título, texto y botones con buen contraste. */
+function Panel({ tone, id, kind, title, order = 2, children, ctas = [] }: PanelProps) {
+  const dark = darkTones.includes(tone)
   return (
     <>
-      <Band tone="azul" id="sobre-mi" labelledBy="about-title">
-        <Grid align="center" gap={{ base: 40, md: 72 }}>
-          <Grid.Col span={{ base: 12, md: 7 }} order={{ base: 2, md: 1 }}>
-            <Reveal effect="up">
-              <Stack gap="lg">
-                <SectionTitle id="about-title" order={level(asPage)} title={site.motto} />
-                <Text size="lg">{site.about.intro}</Text>
-              </Stack>
-            </Reveal>
-          </Grid.Col>
-          <Grid.Col span={{ base: 12, md: 5 }} order={{ base: 1, md: 2 }}>
-            <Reveal effect="right">
-              <PhotoFrame
-                photo={photos.about}
-                shape="arch"
-                ratio={3 / 4}
-                className={classes.narrow}
-              />
-            </Reveal>
-          </Grid.Col>
-        </Grid>
-      </Band>
-      <Band tone="mostaza" labelledBy="about-more">
-        <Grid gap={{ base: 32, md: 72 }} align="center">
-          <Grid.Col span={{ base: 12, md: 4 }}>
-            <Reveal effect="left">
-              <PhotoFrame
-                photo={photos.aboutMore}
-                shape="pill"
-                ratio={2 / 3}
-                className={classes.narrow}
-              />
-            </Reveal>
-          </Grid.Col>
-          <Grid.Col span={{ base: 12, md: 8 }}>
-            <Reveal effect="up">
-              <Title id="about-more" order={asPage ? 2 : 3} c="noche.7" mb="lg">
-                {site.about.title}
-              </Title>
-              <Stack gap="md">
-                {site.about.paragraphs.map((p) => (
-                  <Text key={p}>{p}</Text>
-                ))}
-              </Stack>
-            </Reveal>
-          </Grid.Col>
-        </Grid>
+      {kind && (
+        <Text size="sm" fw={700} className={classes.kind}>
+          {kind}
+        </Text>
+      )}
+      <Title id={id} order={order}>
+        {title}
+      </Title>
+      {children}
+      {ctas.length > 0 && (
+        <Group gap="sm" mt="xs">
+          {ctas.map((cta, i) => (
+            <SmartButton
+              key={cta.href}
+              href={cta.href}
+              color={i === 0 ? bandAccent[tone] : dark ? 'white' : 'tinta'}
+              variant={i === 0 ? 'filled' : 'outline'}
+            >
+              {cta.label}
+            </SmartButton>
+          ))}
+        </Group>
+      )}
+    </>
+  )
+}
+
+interface FeatureProps {
+  tone: PanelTone
+  photo: Photo
+  id: string
+  kind?: string
+  title: string
+  text: ReactNode
+  ctas?: Cta[]
+  photoFirst?: boolean
+  order?: 1 | 2 | 3
+  priority?: boolean
+}
+
+/** Bloque de color + foto cuadrada con un título, un texto y sus botones. */
+export function Feature({
+  tone,
+  photo,
+  id,
+  kind,
+  title,
+  text,
+  ctas,
+  photoFirst,
+  order,
+  priority,
+}: FeatureProps) {
+  return (
+    <Split tone={tone} photo={photo} photoFirst={photoFirst} labelledBy={id} priority={priority}>
+      <Panel tone={tone} id={id} kind={kind} title={title} order={order} ctas={ctas}>
+        {typeof text === 'string' ? <Text size="lg">{text}</Text> : text}
+      </Panel>
+    </Split>
+  )
+}
+
+/** Cabecera de página interna: título grande centrado, como "Contact" en yaknel.com. */
+export function PageHeading({ title, lead, id }: { title: string; lead?: string; id: string }) {
+  return (
+    <Container size="md" pt={{ base: 48, md: 72 }} pb={{ base: 32, md: 48 }} ta="center">
+      <Reveal effect="up">
+        <Title id={id} order={1} c="azul.6" className={classes.pageTitle}>
+          {title}
+        </Title>
+        {lead && (
+          <Text mt="md" size="lg" className="subtitle" c="tinta.5" maw={640} mx="auto">
+            {lead}
+          </Text>
+        )}
+      </Reveal>
+    </Container>
+  )
+}
+
+/* ---------------------------------- Home ---------------------------------- */
+
+export function HeroSection() {
+  return (
+    <Split tone="rosa" photo={photos.hero} labelledBy="hero-title" priority>
+      <div className="stagger">
+        <Text size="sm" fw={700} className={classes.kind}>
+          {site.hero.eyebrow}
+        </Text>
+        <Title id="hero-title" order={1} mt="md">
+          {site.hero.title}
+        </Title>
+        <Text size="lg" mt="lg">
+          {site.hero.lead}
+        </Text>
+        <Group gap="sm" mt="xl">
+          <Button component={Link} to="/writing" color="tinta" size="md">
+            {site.writing.cta}
+          </Button>
+          <Button component={Link} to="/workshop" color="white" variant="outline" size="md">
+            {site.workshop.cta}
+          </Button>
+        </Group>
+      </div>
+    </Split>
+  )
+}
+
+/** Resumen de cada apartado en la portada, cada uno con su llamada a la acción. */
+export function HomeOverview() {
+  return (
+    <>
+      <Feature
+        tone="mostaza"
+        photo={photos.writing.book}
+        photoFirst
+        id="home-writing"
+        kind={site.writing.title}
+        title={site.writing.book.title}
+        text={site.writing.book.description}
+        ctas={[{ label: site.writing.cta, href: '/writing' }]}
+      />
+      <Feature
+        tone="verde"
+        photo={photos.workshop}
+        id="home-workshop"
+        kind="Workshop"
+        title={site.workshop.title}
+        text={site.workshop.lead}
+        ctas={[{ label: site.workshop.cta, href: '/workshop' }]}
+      />
+      <Feature
+        tone="azul"
+        photo={photos.workWithMe.editorial}
+        photoFirst
+        id="home-work"
+        kind={site.workWithMe.title}
+        title={`${site.workWithMe.editorial.title} & ${site.workWithMe.collaboration.title.toLowerCase()}`}
+        text={site.workWithMe.lead}
+        ctas={[{ label: site.workWithMe.cta, href: '/work-with-me' }]}
+      />
+      <Feature
+        tone="lila"
+        photo={photos.speaking}
+        id="home-speaking"
+        kind="Public speaking"
+        title={site.speaking.title}
+        text={site.speaking.lead}
+        ctas={[{ label: site.speaking.cta, href: '/speaking' }]}
+      />
+      <Feature
+        tone="mostaza"
+        photo={photos.about}
+        photoFirst
+        id="home-about"
+        kind={site.about.title}
+        title={site.about.heading}
+        text={site.about.story}
+        ctas={[{ label: site.about.cta, href: '/about' }]}
+      />
+    </>
+  )
+}
+
+/* -------------------------------- Writing -------------------------------- */
+
+export function WritingSections() {
+  const { book, poetry, publication, media } = site.writing
+  return (
+    <>
+      <Feature
+        tone="mostaza"
+        photo={photos.writing.book}
+        id="book"
+        kind={book.kind}
+        title={book.title}
+        text={book.description}
+        ctas={[{ label: book.cta, href: book.href }]}
+      />
+      <Feature
+        tone="rosa"
+        photo={photos.writing.poetry}
+        photoFirst
+        id="poetry"
+        kind={poetry.kind}
+        title={poetry.title}
+        text={poetry.description}
+        ctas={[{ label: poetry.cta, href: poetry.href }]}
+      />
+      <Feature
+        tone="azul"
+        photo={photos.writing.publication}
+        id="publication"
+        kind={publication.kind}
+        title={publication.title}
+        text={publication.description}
+        ctas={[{ label: publication.cta, href: publication.href }]}
+      />
+
+      <Band tone="blanco" labelledBy="media-title">
+        <Reveal effect="up">
+          <Title id="media-title" order={2} c="verde.6" ta="center" mb={40}>
+            Selected media
+          </Title>
+        </Reveal>
+        <SimpleGrid cols={{ base: 1, sm: 3 }} spacing={{ base: 40, sm: 24 }}>
+          {media.map((m, i) => {
+            const photo = photos.writing.media[i]
+            const tone = (['lila', 'verde', 'rosa'] as const)[i % 3]
+            return (
+              <Reveal key={m.href} effect="up" delay={i * 120}>
+                <Stack component="article" gap={0} h="100%">
+                  {photo && <PhotoFrame photo={photo} />}
+                  <Stack
+                    gap="xs"
+                    p="lg"
+                    flex={1}
+                    className={classes.card}
+                    data-tone={tone}
+                    align="flex-start"
+                  >
+                    <Text size="sm" fw={700} className={classes.kind}>
+                      {m.kind}
+                    </Text>
+                    <Title order={3}>{m.title}</Title>
+                    <Text flex={1}>{m.description}</Text>
+                    <SmartButton href={m.href} color="white" variant="outline" size="sm">
+                      {m.cta}
+                    </SmartButton>
+                  </Stack>
+                </Stack>
+              </Reveal>
+            )
+          })}
+        </SimpleGrid>
       </Band>
     </>
   )
 }
 
-export function ContactSection({ asPage, subject }: SectionProps & { subject?: string }) {
+/* -------------------------------- Workshop -------------------------------- */
+
+export function WorkshopSections() {
+  const items = offerings.filter((o) => o.kind === 'taller')
   return (
-    <Band tone="morado" id="contacto" labelledBy="contacto-title">
-      <Grid gap={{ base: 40, md: 72 }} align="center">
-        <Grid.Col span={{ base: 12, md: 5 }} visibleFrom="md">
-          <Reveal effect="left">
-            <PhotoFrame photo={photos.contact} shape="arch" ratio={3 / 4} />
-          </Reveal>
-        </Grid.Col>
-        <Grid.Col span={{ base: 12, md: 7 }}>
-          <Reveal effect="up">
-            <SectionTitle
-              id="contacto-title"
-              order={level(asPage)}
-              title={site.contact.title}
-              lead={site.contact.lead}
-            />
-            <Box mt="xl">
-              {/* key: si cambia el asunto en la URL, el formulario se reinicia con el nuevo valor */}
-              <ContactForm key={subject} initialSubject={subject} />
+    <>
+      <Feature
+        tone="verde"
+        photo={photos.workshop}
+        id="workshop-title"
+        order={1}
+        kind="Workshop"
+        title={site.workshop.title}
+        text={site.workshop.lead}
+        ctas={[{ label: site.workshop.cta, href: '#next' }]}
+        priority
+      />
+      <Band tone="blanco" id="next" labelledBy="next-title">
+        <Reveal effect="up">
+          <SectionTitle id="next-title" title="Next workshops" />
+        </Reveal>
+        <OfferingList items={items} buttonColor="verde" />
+      </Band>
+      <Gallery photos={photos.gallery} label="Workshop photos" />
+      <TestimonialsSection items={testimonials.workshop} tone="lila" />
+      <FaqSection />
+    </>
+  )
+}
+
+function FaqSection() {
+  return (
+    <Band tone="blanco" labelledBy="faq-title" size="md">
+      <Reveal effect="up">
+        <SectionTitle id="faq-title" title={site.workshop.faqTitle} />
+        <Accordion mt="xl" variant="separated" radius={0} classNames={{ item: classes.faqItem }}>
+          {site.workshop.faq.map((f) => (
+            <Accordion.Item key={f.q} value={f.q}>
+              <Accordion.Control>{f.q}</Accordion.Control>
+              <Accordion.Panel>{f.a}</Accordion.Panel>
+            </Accordion.Item>
+          ))}
+        </Accordion>
+      </Reveal>
+    </Band>
+  )
+}
+
+/* ------------------------------ Testimonials ------------------------------ */
+
+/** Testimonios en bloques de color. No se muestra nada mientras la lista esté vacía. */
+export function TestimonialsSection({ items, tone }: { items: Testimonial[]; tone: PanelTone }) {
+  if (items.length === 0) return null
+  return (
+    <Band tone="blanco" labelledBy="testimonials-title">
+      <Title id="testimonials-title" order={2} c="verde.6" ta="center" mb={40}>
+        Testimonials
+      </Title>
+      <SimpleGrid cols={{ base: 1, md: Math.min(items.length, 3) }} spacing={24}>
+        {items.map((t, i) => (
+          <Reveal key={t.name + i} effect="up" delay={i * 120}>
+            <Box component="figure" className={classes.quote} data-tone={tone} m={0}>
+              <Text component="blockquote" size="lg" m={0} className="subtitle">
+                “{t.quote}”
+              </Text>
+              <Text component="figcaption" mt="md" fw={700}>
+                {t.name}
+                {t.role && (
+                  <Text component="span" fw={400}>
+                    {' '}
+                    · {t.role}
+                  </Text>
+                )}
+              </Text>
             </Box>
           </Reveal>
-        </Grid.Col>
-      </Grid>
+        ))}
+      </SimpleGrid>
+    </Band>
+  )
+}
+
+/* ------------------------------ Work with me ------------------------------ */
+
+export function WorkWithMeSections() {
+  const { editorial, collaboration, cta } = site.workWithMe
+  return (
+    <>
+      <Feature
+        tone="azul"
+        photo={photos.workWithMe.editorial}
+        id="editorial"
+        kind={editorial.kind}
+        title={editorial.title}
+        text={editorial.description}
+        ctas={[{ label: cta, href: '/contact?asunto=editorial' }]}
+      />
+      <Feature
+        tone="verde"
+        photo={photos.workWithMe.collaboration}
+        photoFirst
+        id="collaboration"
+        kind={collaboration.kind}
+        title={collaboration.title}
+        text={collaboration.description}
+        ctas={[{ label: cta, href: '/contact?asunto=colaboracion' }]}
+      />
+      <TestimonialsSection items={testimonials.workWithMe} tone="mostaza" />
+    </>
+  )
+}
+
+/* ---------------------------- Public speaking ---------------------------- */
+
+export function SpeakingSections() {
+  const { title, lead, cta, topics, topicsTitle, events, eventsTitle } = site.speaking
+  return (
+    <Split tone="rosa" photo={photos.speaking} labelledBy="speaking-title" priority>
+      <Title id="speaking-title" order={1}>
+        {title}
+      </Title>
+      <Text size="lg">{lead}</Text>
+      <div>
+        <Title order={3} mb="xs">
+          {topicsTitle}
+        </Title>
+        <List spacing={4} c="inherit">
+          {topics.map((t) => (
+            <List.Item key={t}>{t}</List.Item>
+          ))}
+        </List>
+      </div>
+      {events.length > 0 && (
+        <div>
+          <Title order={3} mb="xs">
+            {eventsTitle}
+          </Title>
+          <List spacing={4} c="inherit">
+            {events.map((e) => (
+              <List.Item key={e}>{e}</List.Item>
+            ))}
+          </List>
+        </div>
+      )}
+      <Group>
+        <Button component={Link} to="/contact?asunto=speaking" color="tinta">
+          {cta}
+        </Button>
+      </Group>
+    </Split>
+  )
+}
+
+/* --------------------------------- About --------------------------------- */
+
+export function AboutSections() {
+  const a = site.about
+  return (
+    <>
+      <Split tone="mostaza" photo={photos.about} photoFirst labelledBy="about-title" priority>
+        <Text size="sm" fw={700} className={classes.kind}>
+          {a.title}
+        </Text>
+        <Title id="about-title" order={1}>
+          {a.heading}
+        </Title>
+        <Text size="lg">{a.story}</Text>
+        <Text>{a.philosophy}</Text>
+      </Split>
+      <Split tone="azul" photo={photos.aboutMore} labelledBy="about-experience">
+        <Title id="about-experience" order={2}>
+          Experience
+        </Title>
+        <Group gap={8}>
+          {a.roles.map((r) => (
+            <span key={r} className={classes.role}>
+              {r}
+            </span>
+          ))}
+        </Group>
+        <Stack gap="sm">
+          {a.experience.map((p) => (
+            <Text key={p}>{p}</Text>
+          ))}
+        </Stack>
+        <div>
+          <Title order={3} mb="xs">
+            {a.credentialsTitle}
+          </Title>
+          <List spacing={4} c="inherit" size="sm">
+            {a.credentials.map((c) => (
+              <List.Item key={c}>{c}</List.Item>
+            ))}
+          </List>
+        </div>
+        <Group>
+          <Button component={Link} to="/work-with-me" color="mostaza">
+            {site.workWithMe.title}
+          </Button>
+        </Group>
+      </Split>
+    </>
+  )
+}
+
+/* ------------------------- Newsletter & contact ------------------------- */
+
+/** Suscripción a Sigo Aquí (Substack). */
+export function NewsletterSection() {
+  return (
+    <Feature
+      tone="lila"
+      photo={photos.newsletter}
+      photoFirst
+      id="newsletter-title"
+      kind="Newsletter"
+      title={site.newsletter.title}
+      text={
+        <Stack gap="md">
+          <Text size="lg">{site.newsletter.lead}</Text>
+          <SubscribeEmbed />
+        </Stack>
+      }
+    />
+  )
+}
+
+/** Contacto como en yaknel.com: fondo blanco, título centrado y formulario estrecho. */
+export function ContactSection({ subject }: { subject?: string }) {
+  return (
+    <Box component="section" aria-labelledby="contact-title" pb={{ base: 56, md: 88 }}>
+      <PageHeading id="contact-title" title={site.contact.title} lead={site.contact.lead} />
+      <Container size={560}>
+        <Reveal effect="up">
+          {/* key: si cambia el asunto en la URL, el formulario se reinicia con el nuevo valor */}
+          <ContactForm key={subject} initialSubject={subject} />
+          <Text ta="center" mt="xl" c="verde.6">
+            {site.location}
+          </Text>
+        </Reveal>
+      </Container>
+    </Box>
+  )
+}
+
+/* ---------------------------------- Shop ---------------------------------- */
+
+export function ShopSection() {
+  return (
+    <Band tone="blanco" labelledBy="shop-title">
+      <SectionTitle id="shop-title" order={1} title={site.shop.title} lead={site.shop.lead} />
+      <ProductList items={products} buttonColor="verde" />
     </Band>
   )
 }

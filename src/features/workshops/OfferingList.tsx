@@ -25,12 +25,7 @@ export function OfferingList({ items, buttonColor }: OfferingListProps) {
             <Grid gap={{ base: 'md', md: 'xl' }} align="center">
               {photo && (
                 <Grid.Col span={{ base: 12, sm: 3, md: 2 }}>
-                  <PhotoFrame
-                    photo={photo}
-                    shape={i % 2 ? 'pill' : 'arch'}
-                    ratio={3 / 4}
-                    className={classes.thumb}
-                  />
+                  <PhotoFrame photo={photo} className={classes.thumb} />
                 </Grid.Col>
               )}
               <Grid.Col span={{ base: 12, sm: 9, md: photo ? 3 : 4 }}>
@@ -51,7 +46,7 @@ export function OfferingList({ items, buttonColor }: OfferingListProps) {
                       size="sm"
                       c="inherit"
                       icon={<IconCalendarEvent size={16} aria-hidden="true" />}
-                      aria-label="Próximas fechas"
+                      aria-label="Próximas fechas / Upcoming dates"
                     >
                       {dates.map((d) => (
                         <List.Item key={d}>{formatDate(d)}</List.Item>

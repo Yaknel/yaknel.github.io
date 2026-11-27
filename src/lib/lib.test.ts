@@ -22,7 +22,7 @@ describe('isExternalUrl', () => {
   it.each([
     ['https://buy.stripe.com/x', true],
     ['mailto:a@b.c', true],
-    ['/contacto', false],
+    ['/contact', false],
   ])('%s → %s', (href, expected) => {
     expect(isExternalUrl(href)).toBe(expected)
   })

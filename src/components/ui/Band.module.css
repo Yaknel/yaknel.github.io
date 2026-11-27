@@ -1,23 +1,22 @@
 .band {
   position: relative;
   overflow: hidden;
-  padding-block: 4.5rem;
-  transition: background-color 600ms ease;
-  color: var(--yk-noche);
+  padding-block: 4rem;
+  color: var(--mantine-color-tinta-6);
 
   @media (min-width: $mantine-breakpoint-md) {
-    padding-block: 6.5rem;
+    padding-block: 5.5rem;
   }
 
   &[data-dark] {
     color: white;
   }
 
-  &[data-tone='morado'] {
-    background: var(--mantine-color-morado-6);
+  &[data-tone='azul'] {
+    background: var(--mantine-color-azul-6);
   }
-  &[data-tone='lila'] {
-    background: var(--mantine-color-lila-6);
+  &[data-tone='verde'] {
+    background: var(--mantine-color-verde-6);
   }
   &[data-tone='rosa'] {
     background: var(--mantine-color-rosa-6);
@@ -25,14 +24,8 @@
   &[data-tone='mostaza'] {
     background: var(--mantine-color-mostaza-6);
   }
-  &[data-tone='bosque'] {
-    background: var(--mantine-color-bosque-6);
-  }
-  &[data-tone='azul'] {
-    background: var(--mantine-color-azul-6);
-  }
-  &[data-tone='noche'] {
-    background: var(--mantine-color-noche-6);
+  &[data-tone='lila'] {
+    background: var(--mantine-color-lila-6);
   }
   &[data-tone='blanco'] {
     background: white;

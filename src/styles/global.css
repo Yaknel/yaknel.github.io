@@ -17,20 +17,15 @@
   font-display: swap;
 }
 
-:root {
-  --yk-morado: #5f478b;
-  --yk-noche: #2b3a55;
-}
-
 body {
-  background-color: var(--yk-morado);
-  color: white;
+  background-color: white;
+  color: var(--mantine-color-tinta-6);
   -webkit-font-smoothing: antialiased;
 }
 
 ::selection {
   background: var(--mantine-color-mostaza-6);
-  color: var(--yk-noche);
+  color: var(--mantine-color-tinta-6);
 }
 
 :focus-visible {
@@ -45,7 +40,7 @@ body {
   z-index: 1000;
   padding: 0.6rem 1rem;
   background: var(--mantine-color-mostaza-6);
-  color: var(--yk-noche);
+  color: var(--mantine-color-tinta-6);
   transition: top 150ms ease;
 }
 
@@ -53,7 +48,7 @@ body {
   top: 1rem;
 }
 
-/* Subtítulos: Micky en minúsculas, tamaño moderado (Square Sans solo tiene mayúsculas) */
+/* Subtítulos: Micky en minúsculas, tamaño moderado */
 .subtitle {
   font-family: var(--mantine-font-family-headings);
   font-size: clamp(1.1rem, 1.6vw, 1.3rem);

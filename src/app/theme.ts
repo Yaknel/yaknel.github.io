@@ -5,18 +5,14 @@ import { createTheme, type MantineColorsTuple } from '@mantine/core'
  * las 10 tonalidades que Mantine necesita se generan solas.
  */
 export const palette = {
-  // Tonos suavizados (un punto menos de saturación) de la paleta de yaknel.com.
-  // Originales: morado #4b2a86, lila #b38db0, rosa #b87276, mostaza #c9b82a,
-  // verde #3d8b72, bosque #173f3a, azul #53748b, noche #14233f.
-  morado: '#5f478b',
-  lila: '#b6a1b4',
-  rosa: '#b28b8d',
-  mostaza: '#b7ad56',
-  verde: '#588f7e',
-  bosque: '#2f5450',
-  azul: '#5f7686',
-  noche: '#2b3a55',
-  tinta: '#33333a',
+  // Paleta C001 (coolors.co), noviembre 2026
+  azul: '#59758b',
+  verde: '#578874',
+  rosa: '#ae787c',
+  mostaza: '#c8b439',
+  lila: '#ac92ac',
+  // Tinta para textos: azul al -50 % de la misma paleta
+  tinta: '#2d3b46',
 } as const
 
 function hexToRgb(hex: string): [number, number, number] {
@@ -49,32 +45,31 @@ export function shades(base: string): MantineColorsTuple {
 }
 
 export const theme = createTheme({
-  primaryColor: 'morado',
+  primaryColor: 'verde',
   primaryShade: 6,
   autoContrast: true,
   luminanceThreshold: 0.35,
   colors: {
-    morado: shades(palette.morado),
-    lila: shades(palette.lila),
+    azul: shades(palette.azul),
+    verde: shades(palette.verde),
     rosa: shades(palette.rosa),
     mostaza: shades(palette.mostaza),
-    verde: shades(palette.verde),
-    bosque: shades(palette.bosque),
-    azul: shades(palette.azul),
-    noche: shades(palette.noche),
+    lila: shades(palette.lila),
+    tinta: shades(palette.tinta),
   },
   black: palette.tinta,
-  fontFamily: '"Square Sans", "Trebuchet MS", Verdana, sans-serif',
+  // Textos en Alegreya Sans, como en yaknel.com; títulos en Micky
+  fontFamily: '"Alegreya Sans", "Trebuchet MS", Verdana, sans-serif',
   headings: {
     fontFamily: '"Micky", Georgia, serif',
     fontWeight: '400',
     sizes: {
-      h1: { fontSize: 'clamp(2rem, 4.5vw, 3.3rem)', lineHeight: '1.1' },
-      h2: { fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', lineHeight: '1.2' },
+      h1: { fontSize: 'clamp(2.1rem, 4.2vw, 3.2rem)', lineHeight: '1.1' },
+      h2: { fontSize: 'clamp(1.7rem, 3vw, 2.4rem)', lineHeight: '1.15' },
       h3: { fontSize: '1.3rem', lineHeight: '1.25' },
     },
   },
-  fontSizes: { md: '1.05rem', lg: '1.2rem' },
+  fontSizes: { sm: '0.95rem', md: '1.1rem', lg: '1.25rem' },
   defaultRadius: 0,
   cursorType: 'pointer',
   respectReducedMotion: true,
