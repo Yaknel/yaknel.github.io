@@ -209,7 +209,7 @@ export function HomeOverview() {
       />
       <Feature
         tone="azul"
-        photo={photos.workWithMe.editorial}
+        photo={photos.workWithMeHome}
         photoFirst
         id="home-work"
         kind={site.workWithMe.title}
@@ -217,17 +217,40 @@ export function HomeOverview() {
         text={site.workWithMe.lead}
         ctas={[{ label: site.workWithMe.cta, href: '/trabaja-conmigo' }]}
       />
-      <Feature
-        tone="mostaza"
-        photo={photos.about}
-        photoFirst
-        id="home-about"
-        kind={site.about.title}
-        title={site.about.heading}
-        text={site.about.story}
-        ctas={[{ label: site.about.cta, href: '/sobre-mi' }]}
-      />
+      <AboutTeaser />
     </>
+  )
+}
+
+/** "Sobre mí" en la portada: texto centrado con la foto como una franja fina horizontal. */
+function AboutTeaser() {
+  return (
+    <Box component="section" aria-labelledby="home-about-title" className={classes.aboutTeaser}>
+      <Container size="md">
+        <Reveal effect="up">
+          <Stack align="center" ta="center" gap="lg">
+            <Text size="sm" fw={700} c="lila.7" className={classes.kind}>
+              {site.about.title}
+            </Text>
+            <Title id="home-about-title" order={2} c="verde.7">
+              {site.about.heading}
+            </Title>
+            <PhotoFrame
+              photo={photos.aboutStrip}
+              ratio={4}
+              shape="pill"
+              className={classes.aboutStrip}
+            />
+            <Text size="lg" maw={640}>
+              {site.about.story}
+            </Text>
+            <Button component={Link} to="/sobre-mi" color="verde" size="md">
+              {site.about.cta}
+            </Button>
+          </Stack>
+        </Reveal>
+      </Container>
+    </Box>
   )
 }
 

@@ -5,12 +5,22 @@
 export interface Photo {
   src: string
   alt: string
+  /** Qué parte de la foto queda en el centro al recortarla (CSS object-position). */
+  position?: string
 }
 
-const img = (file: string, alt: string): Photo => ({ src: `/images/${file}`, alt })
+const img = (file: string, alt: string, position?: string): Photo => ({
+  src: `/images/${file}`,
+  alt,
+  position,
+})
 
 export const photos = {
-  hero: img('4.jpg', 'Yaknel con la cabeza hacia atrás sobre un fondo pintado de morado'),
+  hero: img(
+    '4.jpg',
+    'Yaknel con la cabeza hacia atrás sobre un fondo pintado de morado',
+    '36% 50%',
+  ),
   writing: {
     book: img('bruma-cover.jpg', 'Portada del libro Bruma'),
     poetry: img('img_20201204_105404-copy.jpg', 'Yaknel con sombrero entre las plantas'),
@@ -48,6 +58,8 @@ export const photos = {
     guide: img('img_20210806_102800.jpg', 'Polaroid de Yaknel en el invernadero'),
   },
   about: img('img_20210806_102800.jpg', 'Polaroid de Yaknel en el invernadero'),
+  aboutStrip: img('about-strip.jpg', 'Yaknel en el invernadero', '50% 40%'),
+  workWithMeHome: img('sara.jpg', 'Pintura colorida de una colaboración creativa con Sara'),
   aboutMore: img('img_20191020_172048.jpg', 'Retrato con abrigo verde'),
   newsletter: img('img_20201204_105005.jpg', 'Yaknel sentada entre plantas'),
   gallery: [

@@ -33,6 +33,7 @@ export function PhotoFrame({
         loading={priority ? 'eager' : 'lazy'}
         decoding="async"
         className={classes.img}
+        style={photo.position ? { objectPosition: photo.position } : undefined}
       />
     </figure>
   )

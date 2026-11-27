@@ -51,7 +51,7 @@ export const site = {
 
   /* ---------- Inicio ---------- */
   hero: {
-    eyebrow: 'Yaknel Elorza · Escritora, poeta y facilitadora',
+    eyebrow: 'Autora, poeta y facilitadora',
     title: 'Palabras que habitan la cuerpa',
     lead: 'Escritora y poeta venezolana caribeña en Berlín. Escribo, doy talleres de escritura creativa y somática, y acompaño a otras escritoras y proyectos desde la primera idea hasta la página terminada.',
   },
