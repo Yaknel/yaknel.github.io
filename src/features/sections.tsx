@@ -236,7 +236,7 @@ function AboutTeaser() {
               <Title id="home-about-title" order={2}>
                 {site.about.heading}
               </Title>
-              <PhotoFrame photo={photos.aboutStrip} ratio={3.5} className={classes.aboutStrip} />
+              <PhotoFrame photo={photos.aboutStrip} ratio={2.6} className={classes.aboutStrip} />
               <Text size="lg" maw={640}>
                 {site.about.story}
               </Text>

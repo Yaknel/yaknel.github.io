@@ -193,7 +193,7 @@ export const site = {
       'Referente de pensamiento',
     ],
     story:
-      'Soy escritora y poeta queer venezolana caribeña y vivo en Berlín. Escribo entre el español, el inglés y el alemán, entre el exilio, la memoria y la cuerpa.',
+      'Soy escritora y poeta queer venezolana caribeña y vivo en Berlín. Escribo entre el español y el inglés, entre el exilio, la memoria y la cuerpa.',
     philosophy:
       'Mi práctica artística se relaciona con el activismo de la vida cotidiana, buscando fomentar la creatividad y la autenticidad a través de experiencias tanto individuales como colectivas.',
     experience: [

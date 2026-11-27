@@ -70,9 +70,8 @@
 }
 
 .newsletterTitle {
-  color: var(--mantine-color-mostaza-6);
+  color: var(--mantine-color-verde-9);
   font-size: clamp(2.4rem, 5vw, 3.6rem);
-  text-shadow: 0 2px 10px rgb(45 59 70 / 0.25);
 }
 
 .price {
@@ -101,6 +100,6 @@
 }
 
 .aboutStrip {
-  max-width: 720px;
+  max-width: 440px;
   margin-block: 0.5rem;
 }
