@@ -10,14 +10,15 @@
 
 .input {
   height: 48px;
-  background: transparent;
+  background: white;
   border: 2px solid white;
-  border-radius: 8px;
-  color: white;
+  border-radius: 999px;
+  padding-inline: 1.2rem;
+  color: var(--mantine-color-tinta-9);
   font-size: 1rem;
 
   &::placeholder {
-    color: rgb(255 255 255 / 0.8);
+    color: var(--mantine-color-lila-7);
   }
 
   &:focus {
@@ -28,7 +29,7 @@
 .button {
   height: 48px;
   border: 2px solid white;
-  border-radius: 8px;
+  border-radius: 999px;
   padding-inline: 1.6rem;
   font-weight: 400;
   font-size: 1rem;

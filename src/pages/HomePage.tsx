@@ -8,8 +8,8 @@ export default function HomePage() {
     <>
       <Seo description={site.hero.lead} />
       <HeroSection />
-      <HomeOverview />
       <NewsletterSection />
+      <HomeOverview />
     </>
   )
 }

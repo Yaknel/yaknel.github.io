@@ -74,7 +74,7 @@ export const theme = createTheme({
   cursorType: 'pointer',
   respectReducedMotion: true,
   components: {
-    Button: { defaultProps: { radius: 0, size: 'md' } },
+    Button: { defaultProps: { radius: 'xl', size: 'md' } },
     TextInput: { defaultProps: { radius: 0, size: 'md' } },
     Textarea: { defaultProps: { radius: 0, size: 'md' } },
     Select: { defaultProps: { radius: 0, size: 'md' } },

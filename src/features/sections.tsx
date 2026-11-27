@@ -547,9 +547,13 @@ export function NewsletterSection({
               <Title id={`${id}-title`} order={2} className={classes.newsletterTitle}>
                 {site.newsletter.title}
               </Title>
-              <Text size="lg" maw={720}>
-                {text}
-              </Text>
+              <Stack gap="sm" maw={720} my="sm">
+                {text.split(/(?<=[.!?])\s+/).map((line) => (
+                  <Text key={line} size="lg">
+                    {line}
+                  </Text>
+                ))}
+              </Stack>
               <SubscribeEmbed label={site.newsletter.cta} />
               {link && (
                 <Anchor

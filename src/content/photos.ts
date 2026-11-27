@@ -40,7 +40,7 @@ export const photos = {
   } as Record<string, Photo>,
   workWithMe: {
     editorial: img('img_20210616_182151.jpg', 'Retrato de Yaknel'),
-    collaboration: img('019.jpg', 'Performance con una gran tela roja en un jardín'),
+    collaboration: img('sara.jpg', 'Pintura colorida de una colaboración creativa con Sara'),
   },
   speaking: img('season-opening-2020.jpg', 'Yaknel presentando un evento'),
   somatica: {
