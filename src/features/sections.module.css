@@ -95,6 +95,11 @@
 }
 
 .aboutStrip {
-  max-width: 820px;
-  margin-block: 0.5rem;
+  border-block: 6px solid var(--mantine-color-lila-4);
+}
+
+@media (max-width: $mantine-breakpoint-sm) {
+  .aboutStrip {
+    aspect-ratio: 2.5 !important;
+  }
 }

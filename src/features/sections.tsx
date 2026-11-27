@@ -70,7 +70,7 @@ function Panel({ tone, id, kind, title, order = 2, children, ctas = [] }: PanelP
       </Title>
       {children}
       {ctas.length > 0 && (
-        <Group gap="sm" mt="xs">
+        <Group gap="sm" mt="xs" justify="center" w="100%">
           {ctas.map((cta, i) => (
             <SmartButton
               key={cta.href}
@@ -164,7 +164,7 @@ export function HeroSection() {
         <Text size="lg" mt="lg">
           {site.hero.lead}
         </Text>
-        <Group gap="sm" mt="xl">
+        <Group gap="sm" mt="xl" justify="center" w="100%">
           <Button component={Link} to="/escritura" color="tinta" size="md">
             {site.writing.cta}
           </Button>
@@ -226,25 +226,22 @@ export function HomeOverview() {
 function AboutTeaser() {
   return (
     <Box component="section" aria-labelledby="home-about-title" className={classes.aboutTeaser}>
-      <Container size="md">
+      <Container size="xl">
         <Reveal effect="up">
-          <Stack align="center" ta="center" gap="lg">
+          <PhotoFrame photo={photos.aboutStrip} ratio={5} className={classes.aboutStrip} />
+        </Reveal>
+      </Container>
+      <Container size="sm" mt={{ base: 40, md: 56 }}>
+        <Reveal effect="up">
+          <Stack align="center" ta="center" gap="md">
             <Text size="sm" fw={700} c="lila.7" className={classes.kind}>
               {site.about.title}
             </Text>
             <Title id="home-about-title" order={2} c="verde.7">
               {site.about.heading}
             </Title>
-            <PhotoFrame
-              photo={photos.aboutStrip}
-              ratio={4}
-              shape="pill"
-              className={classes.aboutStrip}
-            />
-            <Text size="lg" maw={640}>
-              {site.about.story}
-            </Text>
-            <Button component={Link} to="/sobre-mi" color="verde" size="md">
+            <Text size="lg">{site.about.story}</Text>
+            <Button component={Link} to="/sobre-mi" color="verde" size="md" mt="sm">
               {site.about.cta}
             </Button>
           </Stack>
@@ -529,7 +526,7 @@ export function AboutSections() {
             ))}
           </List>
         </div>
-        <Group>
+        <Group justify="center" w="100%">
           <Button component={Link} to="/trabaja-conmigo" color="mostaza">
             {site.workWithMe.title}
           </Button>
@@ -651,7 +648,7 @@ export function SomaticaSections() {
             ))}
             <span className={classes.price}>{t.price}</span>
           </Group>
-          <Group mt="xl">
+          <Group mt="xl" justify="center" w="100%">
             <SmartButton href={t.bookingHref} color="mostaza" size="md">
               {t.cta}
             </SmartButton>
