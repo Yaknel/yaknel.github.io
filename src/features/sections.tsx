@@ -225,27 +225,27 @@ export function HomeOverview() {
 /** "Sobre mí" en la portada: texto centrado con la foto como una franja fina horizontal. */
 function AboutTeaser() {
   return (
-    <Box component="section" aria-labelledby="home-about-title" className={classes.aboutTeaser}>
+    <Box component="section" aria-labelledby="home-about-title" className={classes.newsletter}>
       <Container size="xl">
-        <Reveal effect="up">
-          <PhotoFrame photo={photos.aboutStrip} ratio={5} className={classes.aboutStrip} />
-        </Reveal>
-      </Container>
-      <Container size="sm" mt={{ base: 40, md: 56 }}>
-        <Reveal effect="up">
-          <Stack align="center" ta="center" gap="md">
-            <Text size="sm" fw={700} c="lila.7" className={classes.kind}>
-              {site.about.title}
-            </Text>
-            <Title id="home-about-title" order={2} c="verde.7">
-              {site.about.heading}
-            </Title>
-            <Text size="lg">{site.about.story}</Text>
-            <Button component={Link} to="/sobre-mi" color="verde" size="md" mt="sm">
-              {site.about.cta}
-            </Button>
-          </Stack>
-        </Reveal>
+        <div className={classes.aboutInner}>
+          <Reveal effect="up">
+            <Stack align="center" ta="center" gap="md">
+              <Text size="sm" fw={700} className={classes.kind}>
+                {site.about.title}
+              </Text>
+              <Title id="home-about-title" order={2}>
+                {site.about.heading}
+              </Title>
+              <PhotoFrame photo={photos.aboutStrip} ratio={3.5} className={classes.aboutStrip} />
+              <Text size="lg" maw={640}>
+                {site.about.story}
+              </Text>
+              <Button component={Link} to="/sobre-mi" color="verde" size="md" mt="xs">
+                {site.about.cta}
+              </Button>
+            </Stack>
+          </Reveal>
+        </div>
       </Container>
     </Box>
   )
